@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HPP system</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+    <!-- bootstrap 3.0.2 -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    {% block customstyle %}{% endblock %}
+    <style type="text/css">
+        .sidebar-menu span{
+            font-size: 18px;
+        }
+        .sidebar .sidebar-menu > li > a{
+            padding: 20px 5px 20px 15px;
+        }
+        .navbar {
+        display: block; !important;
+    }
+
+
+    </style>
+    </head>
+    <body class="skin-black">
+    <header class="header">
+        <a href="{% url 'home' %}" class="logo">
+            HPP system
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+
+            <div class="navbar-right">
+                <ul class="nav navbar-nav" >
+                    {% if request.user.is_authenticated %}
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i>
+                                <span>{{ request.user }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                                <li class="dropdown-header text-center"><a href="{% url 'user_profile:logout' %}">logout</a></li>
+                                <li class="dropdown-header text-center"><a href="{% url 'user_profile:profile' %}">个人中心</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+
+    </header>
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side sidebar-offcanvas" style="height: 1200px;">
+            <section class="sidebar">
+                <div class="user-panel">
+                    {% if request.user.is_authenticated %}
+                    <div class="pull-left info">
+                        <a href="{% url 'user_profile:profile' %}">
+                        <p>Hello, {{ request.user }}</p>
+                        <i class="fa fa-circle text-success"></i>Online</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li {% if request.path == '/' %} class="active" {% endif %}>
+                        <a href="{% url 'home' %}">
+                            <i class="glyphicon glyphicon-home"></i> <span>data list</span>
+                        </a>
+                    </li>
+                    <li {% if request.path == '/predict' %} class="active" {% endif %}>
+                        <a href="{% url 'predict' %}">
+                            <i class="glyphicon glyphicon-tasks"></i> <span>data prediction</span>
+                        </a>
+                    </li>
+
+                    <li {% if request.path == '/analysis' %} class="active" {% endif %}>
+                        <a href="{% url 'analysis' %}">
+                            <i class="glyphicon glyphicon-hand-right"></i> <span>data analysis</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="copyrights">django<a href="#">House Price Prediction System</a></div>
+        <aside class="right-side" style="height: 1200px;overflow: scroll">
+            <section class="content">
+                {% block content %}{% endblock %}
+            </section>
+            <div class="footer-main">
+                Copyright &copy django, 2021 <a href="#" target="_blank">House Price Prediction System</a>
+            </div>
+        </aside>
+    </div>
+    </body>
+    {% block customjs %}{% endblock %}
+</html>

@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block customstyle %}
+
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" charset="utf-8"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+     <script src="{% static 'js/echarts.min.js' %}"></script>
+    <style type="text/css">
+        body{overflow-x:hidden; background:#f2f0f5;}
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+        #main-tab td {
+            font-size: 14px;
+            line-height: 50px;
+        }
+
+        table {
+            border-collapse:collapse;
+            border-spacing:0;
+            font-size:14px;
+        }
+        caption,th {
+            text-align:left;
+        }
+        td.fenye{ padding:10px 0 0 0; text-align:right;}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div style="margin: auto;width: 100%">
+       <h3><i class="fa fa-angle-right"></i> analysis</h3>
+
+
+        <div class="row">
+            <div class="col-md-12 mt">
+                <div class="content-panel">
+                    <form class="form-inline" role="form" method="get" action="/analysis">
+                        <div class="form-group">
+                            <label for="location" class="col-sm-2 control-label">Location</label>
+                            <div class="col-sm-10">
+                                <select name="location" style="width: 500px">
+                                    {% for item in location_list %}
+                                        <option value ="{{ item }}">{{ item }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-theme">start analysis</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt">
+                <div class="content-panel">
+                    <div id="main1" style="height:300px; margin-right: 5%"></div>
+                    <script type="text/javascript">
+                        var myChart1 = echarts.init(document.getElementById('main1'));
+                        myChart1.setOption({
+                            title: {
+                                text: 'The Chart of the Price and Quantity'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'shadow'
+                                }
+                            },
+                            legend: {
+                                data:{{ price_json.keyword | safe }}
+                            },
+
+                            yAxis: {
+                                type: 'value',
+                            },
+                            xAxis: {
+                                type: 'category',
+                                data:{{ price_json.keyword | safe }}
+                            },
+
+                            series: [{
+                                name: 'Quantity',
+                                type: 'bar',
+                                data: {{ price_json.count | safe }}
+                            }]
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt">
+                <div class="content-panel">
+                    <div id="main2" style="height:300px; margin-right: 5%"></div>
+                    <script type="text/javascript">
+                        var myChart2 = echarts.init(document.getElementById('main2'));
+                        myChart2.setOption({
+                            title: {
+                                text: 'The Chart of the Size num and Quantity'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'shadow'
+                                }
+                            },
+                            legend: {
+                                data:{{ size_num_json.keyword | safe }}
+                            },
+
+                            yAxis: {
+                                type: 'value',
+                            },
+                            xAxis: {
+                                type: 'category',
+                                data:{{ size_num_json.keyword | safe }}
+                            },
+
+                            series: [{
+                                name: 'Quantity',
+                                type: 'bar',
+                                data: {{ size_num_json.count | safe }}
+                            }]
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt">
+                <div class="content-panel">
+                    <div id="main3" style="height:300px; margin: auto;"></div>
+                    <script type="text/javascript">
+                        var myChart3 = echarts.init(document.getElementById('main3'));
+                        myChart3.setOption({
+                            title: {
+                                text: 'The ratio of Car park'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                bottom: 10,
+                                left: 'center',
+                                data: ['With Car park', 'Without car park']
+                            },
+                            series: [{
+                                type: 'pie',
+                                name: 'The ratio of The Car park',
+                                radius : '60%',
+                                center: ['50%', '50%'],
+                                selectedMode: 'single',
+                                data: {{ car_park_json | safe }}
+                            }]
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt">
+                <div class="content-panel">
+                    <div id="main4" style="height:300px; margin: auto;"></div>
+                    <script type="text/javascript">
+                        var myChart4 = echarts.init(document.getElementById('main4'));
+                        myChart4.setOption({
+                            title: {
+                                text: 'furnishing'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                bottom: 10,
+                                left: 'center',
+                                data: ['with furnishing', 'without furnishing']
+                            },
+                            series: [{
+                                type: 'pie',
+                                name: 'The Ratio of the furnishing',
+                                radius : '60%',
+                                center: ['50%', '50%'],
+                                selectedMode: 'single',
+                                data: {{ furnishing_json | safe }}
+                            }]
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

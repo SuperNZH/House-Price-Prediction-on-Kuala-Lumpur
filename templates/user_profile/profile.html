@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load extratags %}
+{% block customstyle %}
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" charset="utf-8"></script>
+
+
+    <style>
+    .profile
+    {
+        width: 80%;
+        height: 500px;
+        margin: 50px 0;
+        border: 1px solid #eee;
+    }
+    .profile > p{
+        height: 40px;
+        background-color: lightgray;
+        color: black;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+    .profile > form {
+        overflow: hidden;
+        margin-top: -10px;
+    }
+    .profile > form > div.left {
+        float: left;
+        width: 40%;
+        border-right:1px solid #eee;
+    }
+    .profile > form > div.left > div:nth-child(1) {
+        height: 300px;
+        position: relative;
+        border-bottom: 1px solid #eee;
+    }
+    .profile > form > div.left > div:nth-child(1) > input{
+        display: none;
+    }
+    .profile > form > div.left > div:nth-child(1) > button{
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom:40px;
+    }
+
+    .profile > form > div.left > div:nth-child(2){
+        height: 150px;
+        position: relative;
+    }
+    .profile > form > div.left > div:nth-child(2) > div{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%)translateX(-50%);
+        left: 50%;
+    }
+
+    .profile img{
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        position: absolute;
+        transform: translateX(-50%);left: 50%;
+        top:40px;
+    }
+    .profile div.right{
+        float: left;
+    }
+    .profile div.right > div{
+        border-bottom: 1px solid #eee;
+        padding: 17px 130px;
+    }
+    .profile div.right > div > input{
+        width: 300px;
+    }
+    .profile div.show-submit{
+        border: none;
+        position: relative;
+        height: 94px;
+    }
+    .profile div.show-submit > input{
+        width:100px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%)translateX(-50%);
+        left: 50%;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="center-content">
+       <div class="profile">
+           <p>个人信息</p>
+           <form method="post" action="{% url 'user_profile:profile' %}" id="form1">
+               <input name="id" style="display: none;" value="{{ user.id }}"/>
+
+
+
+               <div class="right">
+
+                   <div>
+                       <span>账&nbsp&nbsp号:</span>&nbsp&nbsp&nbsp<input name="username" value="{{ user.username |format_none }}" readonly>
+                   </div>
+                   <div>
+                       <span>性&nbsp&nbsp别:</span>&nbsp&nbsp&nbsp
+                       <label style="width: 80px;margin-left: 40px"><input name="sex" type="radio" value="0" {% if user.sex == 0 %} checked {% endif %}/>男 </label>
+                       <label><input name="sex" type="radio" value="1" {% if user.sex == 1 %} checked {% endif %}/>女 </label>
+                   </div>
+                   <div>
+                       <span>地&nbsp&nbsp址:</span>&nbsp&nbsp&nbsp<input name="address" value="{{ user.address | format_none}}">
+                   </div>
+                   <div>
+                       <span>手&nbsp机&nbsp号:</span><input name="phone" value="{{ user.phone | format_none }}">
+                   </div>
+                   <div>
+                       <input type="password" name="password" id="password">
+
+                       <button type="button" class="btn btn-info" onclick="change_password()">
+                                   修改密码
+                           </button>
+                   </div>
+
+                   <div class="show-submit">
+                       <input type="submit" class="btn btn-info">
+                   </div>
+               </div>
+               {% csrf_token %}
+           </form>
+       </div>
+
+    </div>
+{% endblock %}
+
+    {% block customjs %}
+    <script type="application/javascript">
+
+    function change_password() {
+        var password = $("#password").val()
+        $.post("{% url 'user_profile:reset-password' %}",{"password":password,"csrfmiddlewaretoken":"{{ csrf_token }}"},function(result){
+            alert("修改成功");
+          });
+
+    }
+
+    </script>
+{% endblock %}
