@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Admin Login--Welcome to use E-Shop System</title>
+	<link type="text/css" rel="stylesheet" href="{{uri}}/app/views/admin/resource/css/style.css" />
+	<script type="text/javascript" src="{{uri}}/app/views/public/js/jquery.js"></script>
+	<script type="text/javascript" src="{{uri}}/app/views/public/js/global.js"></script>
+	<style type="text/css">
+		body{background:#3C7DBE; font-family:'Microsoft Yahei','Simsun',"宋体"}
+		.login_tt{font-size:24px; line-height:30px; color:#fff; width:462px; margin:0 auto; margin-top:150px; text-align:center}
+		.login{background:url({{uri}}/app/views/admin/resource/images/login_bg.png) no-repeat; width:462px; height:244px; margin:0 auto; margin-top:15px; padding-top:40px;}
+		.input1{margin:0px 0 0 65px; font-size:14px; color:#888;}
+		.input1 input{width:140px; height:28px; border:0; line-height:28px; margin-left:5px;}
+		.input2{margin:23px 0 0 60px; font-size:14px; color:#888;}
+		.input2 input{width:140px; height:28px; border:0; line-height:28px; margin-left:5px;}
+		.input3_box{background:#fff url({{uri}}/app/views/admin/resource/images/login_bg.png) no-repeat -36px -87px; border:1px #bbb solid; border-radius:5px; height:35px; line-height:32px;width:182px; padding-left:30px; color:#666; float:left;}
+		.input3{margin:20px 0 0 33px;}
+		.input3_box input{width:53px; height:28px; border:0; line-height:28px; margin-left:5px; margin-top:2px;}
+		.input3 img{margin-left:3px; width:80px; height:32px; border:0; float:left; display:inline; margin-top:2px;}
+		.login_btn{margin:25px 0 0 33px;}
+		.login_btn input{background:url({{uri}}/app/views/admin/resource/images/login_btn.png) no-repeat; width:216px; height:43px; border:0; cursor:pointer;}
+		.copyright{text-align:center; color:#BECAD6;}
+		.copyright a,.copyright a:hover{color:#BECAD6;}
+		.login .input_name{float:left; margin-top:3px; display:block;}
+	</style>
+</head>
+<body>
+<div class="login_tt"><span class="num">E-Shop</span> Management System</div>
+<form  method="post" action="/admin/login/dologin">
+	<div class="login" id="login-form">
+		<div class="input1"><span class="input_name">Acc:</span><input  type="text" name="name" value="" /><div class="clear"></div></div>
+		<div class="input2"><span class="input_name">Ps:</span><input type="password" name="pw" value="" /><div class="clear"></div></div>
+		<div class="input3">
+			<div class="input3_box" style="position:relative;">
+				<span class="fl">Verify:</span>
+				<input class="fl" type="text" maxlength="6" onkeyup="if(this.value!=this.value.toUpperCase()) this.value=this.value.toUpperCase()" name="code" />
+				<div class="clear"></div>
+				<img src="/admin/login/vcode" class="authcode" style="cursor:pointer; position:absolute; left:128px; top:0" />
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="login_btn"><input type="submit" name="do_submit" value=" " /></div>
+	</div>
+</form>
+
+
+<div class="copyright">Copyright <span class="num">&copy;</span> 2018-2021 <a href="http://www.staggeringbeauty.com/" target="_blank">Ni ZheHan - <b>fypwork</b></a> property in copyright</div>
+
+
+<script type="text/javascript">
+	$(function(){
+
+		$(":input[name='name']").focus();
+
+		$(".authcode").click(function(){
+			$(this).attr("src", $(this).attr("src") + '?time=' + new Date().getTime());
+		});// src重新要获取，且随机，要不然浏览器会缓存
+
+		$(":submit").click(function(){
+			if ($(":input[name='name']").val() == '') {
+				alert('The account cannot be empty!')
+				return false;
+			}
+
+			if ($(":input[name='pw']").val() == '') {
+				alert('Password cannot be empty!')
+				return false;
+			}
+
+			return true;
+		});
+	});
+</script>
+</body>
+</html>
+
+

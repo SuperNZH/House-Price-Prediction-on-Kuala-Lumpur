@@ -1,0 +1,59 @@
+{% include "public/header.html" %}
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">Site information settings</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" enctype="multipart/form-data" action="/admin/setting/doupdate">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+					<tr>
+						<td class="bg_f8" align="right" width="100">Web title:</td>
+						<td><input type="text" name="web_title" value="{{web_title}}" class="inputall input500" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Key words:</td>
+						<td><input type="text" name="web_keywords" value="{{web_keywords}}" class="inputall input500" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Site description:</td>
+						<td><textarea name="web_description" style="width:500px;height:100px;">{{web_description}}</textarea></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Site LOGO:</td>
+						<td>
+							<p class="mab5"><img src="{{res}}/{{web_logo}}" height="60" style="border:1px solid #ddd" /></p>
+							<p><input type="file" name="web_logo" /></p>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="bg_f8" align="right">Hot line:</td>
+						<td><input type="text" name="web_phone" value="{{web_phone}}" class="inputall input500" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">QQ:</td>
+						<td><input type="text" name="web_qq" value="{{web_qq}}" class="inputall input500" /><span class="c888"> (Please use "," to separate more than one)</span></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Copyright:</td>
+						<td><input type="text" name="web_copyright" value="{{web_copyright}}" class="inputall input500" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">ICP</td>
+						<td><input type="text" name="web_icp" value="{{web_icp}}" class="inputall input500" /></td>
+					</tr>
+
+
+					<tr>
+						<td class="bg_f8">&nbsp;</td>
+						<td><input type="submit" value="Upload" class="tjbtn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+{% include "public/footer.html" %}

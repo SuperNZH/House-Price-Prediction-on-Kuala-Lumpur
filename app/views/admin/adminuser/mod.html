@@ -1,0 +1,39 @@
+{% include "public/header.html" %}
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Edit Administrator</span>
+					<span class="fr fabu"><a href="/admin/adminuser/add">Add</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" action="/admin/adminuser/doupdate">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+					<input type="hidden" name="id" value="{{id}}">
+					<tr>
+						<td class="bg_f8" align="right" width="100">Admin account:</td>
+						<td><input type="text" name="name" value="{{name}}" class="inputall input200" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Password:</td>
+						<td><input type="password" name="pw" class="inputall input200" autocomplete="off" /> <span class="c888">Leave blank if no modification is required</span></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Last login time</td>
+						<td>{{ltime|date('Y-m-d H:i')}}</td>
+					</tr>
+					<tr>
+						<td class="bg_f8">&nbsp;</td>
+						<td><input type="submit"  value="Upload" class="tjbtn" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+
+{% include "public/footer.html" %}

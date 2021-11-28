@@ -1,0 +1,52 @@
+{% include "public/header.html" %}
+
+
+
+
+<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Article Classifications</span>
+					<span class="fr fabu"><a href="/admin/aclass/add">Add</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form action="/admin/aclass/order" method="post" id="form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list mat5">
+					<tr>
+						<td class="bgtt" width="60">ID</td>
+						<td class="bgtt" width="60">Order</td>
+						<td class="bgtt">Class Name</td>
+						<td class="bgtt" width="88">Operate</td>
+					</tr>
+
+					{% for v in data %}
+
+					<tr>
+						<td>{{v.id}}</td>
+						<td><input type="text" name="ord[{{v.id}}]" value="{{v.ord}}" class="inputtext input40" /></td>
+						<td>{{v.catname}}</td>
+						<td>
+							<a href="/admin/aclass/mod/{{v.id}}" class="admin_edit mar3">Edit</a>
+
+							<a href="/admin/aclass/del/{{v.id}}" class="admin_del" onclick="return confirm('Are you sure you want to delete {{v.catname}}?')">Del</a>
+
+
+						</td>
+					</tr>
+
+					{% endfor %}
+
+
+					<tr>
+						<td class="bgtt aleft" colspan="5"><input type="submit" name="do_submit" value="Reorder" class="tjbtn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+		{% include "public/footer.html" %}
+

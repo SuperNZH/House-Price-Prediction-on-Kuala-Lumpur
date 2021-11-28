@@ -1,0 +1,92 @@
+{% include "public/header.html" %}
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Article List</span>
+					<span class="fr fabu"><a href="/admin/article/add">Post New</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="search">
+				<div class="fr searbox">
+					<form method="get" action="/admin/article">
+						Article Name:<input type="text" name="name" value="{{get.name}}" class="inputtext inputtext_200" />
+
+						<select name="cid" class="inputselect">
+							<option value="0">All Class</option>
+							{% for v in aclass %}
+							<option {% if get.cid == v.id %}selected{%endif%}  value="{{v.id}}" >{{v.catname}}</option>
+							{% endfor %}
+						</select>
+						<input type="submit" value="Search" class="input2 tjbtn" />
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" id="form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+					<tr>
+						<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+						<td class="bgtt" width="60">ID Num</td>
+						<td class="bgtt" style="text-align: left;">Name</td>
+						<td class="bgtt" width="100">Post Date</td>
+						<td class="bgtt" width="80">Views</td>
+						<td class="bgtt" width="88">Operate</td>
+					</tr>
+					{% for v in data %}
+					<tr>
+						<td><input type="checkbox" name="id[]" value="{{v.id}}"></td>
+						<td>{{v.id}}</td>
+						<td class="aleft"><a href="/article/{{v.id}}" target="_blank">{{v.name}}</a></td>
+						<td>{{v.atime|date('Y-m-d H:i')}}</td>
+						<td>{{v.clicknum}}</td>
+						<td>
+							<a href="/admin/article/mod/{{v.id}}" class="admin_edit mar3">Edit</a>
+							<a href="/admin/article/del/{{v.id}}" class="admin_del" onclick="return confirm('You sure you want to delete {{v.name}}?')">Del</a>
+						</td>
+					</tr>
+					{% endfor %}
+
+
+
+					<tr>
+						<td class="bgtt"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+						<td class="bgtt aleft" colspan="1">
+							<span class="fl"><button href="/admin/article/alldel" onclick="return bro_cfall(this, 'id', 'form', 'Delete Selected')">Delete</button></span>
+
+
+
+						</td>
+						<td class="bgtt" style="text-align: right" colspan="4">
+							<style>
+								ul.pagination {
+									margin-top: 5px;
+									display: inline-block;
+								}
+
+								.pagination li {
+									padding:2px 10px;
+									float:left;
+									margin:0 5px;
+									background:white;
+								}
+								.pagination .active {
+									background:lightskyblue;
+								}
+							</style>
+							{% autoescape false %}
+							{{fpage}}
+							{% endautoescape %}
+
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+{% include "public/footer.html" %}
+

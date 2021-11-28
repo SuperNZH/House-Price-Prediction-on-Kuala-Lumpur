@@ -1,0 +1,50 @@
+{% include "public/header.html" %}
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Products Category</span>
+					<span class="fr fabu"><a href="/admin/category/add">Add Class</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form action="/admin/category/order" method="post" id="form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list mat5">
+					<tr>
+						<td class="bgtt" width="60">ID Num</td>
+						<td class="bgtt" width="70">Order</td>
+						<td class="bgtt" align="left">Class Name</td>
+						<td class="bgtt" width="88">Operation</td>
+					</tr>
+
+					{% for v in cats %}
+					<tr>
+						<td>{{v.id}}</td>
+						<td><input type="text" name="ord[{{v.id}}]" value="{{v.ord}}" class="inputtext input40" /></td>
+						<td class="aleft">
+							{%for i in 0..v.level*8 %}
+							&nbsp;
+							{%endfor%}
+							|-{{v.catname}}
+						</td>
+						<td>
+							<a href="/admin/category/mod/{{v.id}}?pid={{v.pid}}&childs={{v.childs}}" class="admin_edit mar3">Edit</a>
+
+							{% if v.childs == '' %}
+
+							<a href="/admin/category/del/{{v.id}}?childs={{v.childs}}" class="admin_del" onclick="return confirm('You sure want to delete {{v.catname}}?')">Del</a>
+							{% endif %}
+						</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td class="bgtt aleft" colspan="5"><input type="submit" name="do_submit" value="Reorder" class="tjbtn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+{% include "public/footer.html" %}

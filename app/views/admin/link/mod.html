@@ -1,0 +1,42 @@
+{% include "public/header.html"%}
+
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Edit Friendship Link</span>
+					<span class="fr fabu"><a href="/admin/link/add">Add link</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" action="/admin/link/doupdate">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+					<input type="hidden" name="id" value="{{link.id}}" />
+					<tr>
+						<td class="bg_f8" align="right" width="100">Link name:</td>
+						<td><input type="text" name="name" value="{{link.name}}" class="inputall input300" /> <span class="c888">(Such as: Google)</span></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Link URL:</td>
+						<td><input type="text" name="url" value="{{link.url}}" class="inputall input300" /> <span class="c888">(Such as: https://www.google.com)</span></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Link Rank:</td>
+						<td><input type="text" name="ord" value="{{link.ord}}" class="inputall input50" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8">&nbsp;</td>
+						<td><input type="submit" value="Upload" class="tjbtn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+{% include "public/footer.html" %}
+
+
+	
+

@@ -1,0 +1,87 @@
+{% include "public/header.html"%}
+
+<div class="content">
+    <div class="dingdan mab10">
+        <div class="chaxun">
+            <form method="get" action="/order/plist">
+
+                <span class="fl mat5 font14 mab10">请输入您的订单号：</span>
+                <input type="text" name="id" value="{{get.id}}" class="chaxun_input fl mal5" />
+                <div class="clear"></div>
+                <span class="fl mat5 font14 mab20">请输入您的手机号：</span>
+                <input type="text" name="uphone" value="{{get.uphone}}" class="chaxun_input fl mal5" />
+                <div class="clear"></div>
+                <input type="submit" class="chaxun_btn" style="margin-left:180px" value="查 询">
+            </form>
+        </div>
+        {% if id %}
+        <h3 style="margin-top:0">订单状态<span class="normal cred">（您的订单编号为：{{id}}）</span></h3>
+        <p class="mat5">
+
+            <span class="cgreen">已下单</span>[{{atime|date('Y-m-d H:i')}}] →
+            <!--货到付款-->
+
+            {# 货到付款 #}
+            {% if payway == 3 %}
+            {% if state == 1 %}
+            <span class="cred">等待卖家发货</span>
+            {% elseif state == 3%}
+            <span class="cgreen">已发货</span>[{{stime|date('Y-m-d H:i')}}] →
+
+            <span class="cgreen">等待买家付款</span>
+
+
+            {% elseif state == 4 %}
+
+             <span class="cgreen">已发货</span>[{{stime|date('Y-m-d H:i')}}] →
+             <span class="cgreen">已付款</span>[{{ptime|date('Y-m-d H:i')}}] →
+             <span class="cred">交易成功</span>
+            {% endif %}
+            {# 先款后货 #}
+            {% elseif payway == 2%}
+            {% if state == 1 %}
+            <span class="cgreen">等待买家付款</span>
+            {% elseif state == 2%}
+            <span class="cgreen">已付款</span>[{{ptime|date('Y-m-d H:i')}}] →
+            <span class="cred">等待卖家发货</span>
+            {% elseif state == 3%}
+            <span class="cgreen">已付款</span>[{{ptime|date('Y-m-d H:i')}}] →
+            <span class="cgreen">已发货</span>[{{stime|date('Y-m-d H:i')}}] →
+            <span class="cgreen">等待买家确认</span>
+            {% elseif state == 4%}
+            <span class="cgreen">已发货</span>[{{stime|date('Y-m-d H:i')}}] →
+            <span class="cgreen">已付款</span>[{{ptime|date('Y-m-d H:i')}}] →
+            <span class="cred">交易成功</span>
+
+            {% endif %}
+
+            {% elseif payway == 1%}
+
+            {% endif %}
+
+        </p>
+        <h3>商品名称</h3>
+        {% for v in product_list %}
+        <p><a href="/product/{{v.pid}}" title="{{v.pname}}" target="_blank" class="cblue">{{v.pname}}</a>　
+            <span class="num"><small>￥</small>{{v.pmoney}}</span>(×{{v.pnum}})</p>
+        {% endfor %}
+        <h3>物流信息</h3>
+        <p class="mat5">
+            物流公司：{{wlname}}<br />
+            运单号码：{{wlid}}
+        </p>
+        <h3>实付金额</h3>
+        <p class="mat5">
+            <span class="strong num1 font14 cred">{{money}}</span>(元)
+            ＝ <span class="strong num1 font14 cred">{{productmoney}}</span>(商品价格)
+            ＋ <span class="strong num1 font14 cred">{{wlmoney}}</span>(运费)
+        </p>
+
+        {% else %}
+
+            <div class="font16 cred mat10" style="width:100%;text-align: center">您的订单号或手机号有误， 请重新输入</div>
+        {% endif %}
+    </div>
+</div>
+
+{% include "public/footer.html"%}

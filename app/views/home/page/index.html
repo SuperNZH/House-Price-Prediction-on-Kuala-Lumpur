@@ -1,0 +1,56 @@
+{% include "public/header.html" %}
+
+
+<!-- content -->
+
+<div class="content">
+    <div class="now">您现在的位置：<a href="/">首页</a>
+        {% autoescape false %}
+        {{nowpath}}
+        {% endautoescape %}
+    </div>
+    <div class="danye_left">
+        <div class="danye_help">
+            <div class="danye_list">
+                <h3>用户指南</h3>
+                <ul>
+                    <li><a href="/page/{{page[0].id}}" title="{{page[0].name}}">{{page[0].name}}</a></li>
+                    <li><a href="/page/{{page[1].id}}" title="{{page[1].name}}">{{page[1].name}}</a></li>
+                    <li><a href="/page/{{page[2].id}}" title="{{page[2].name}}">{{page[2].name}}</a></li>
+                </ul>
+                <h3>配送方式</h3>
+                <ul>
+                    <li><a href="/page/{{page[3].id}}" title="{{page[3].name}}">{{page[3].name}}</a></li>
+                    <li><a href="/page/{{page[4].id}}" title="{{page[4].name}}">{{page[4].name}}</a></li>
+                    <li><a href="/page/{{page[5].id}}" title="{{page[5].name}}">{{page[5].name}}</a></li>
+                </ul>
+                <h3>售后服务</h3>
+                <ul>
+                    <li><a href="/page/{{page[6].id}}" title="{{page[6].name}}">{{page[6].name}}</a></li>
+                    <li><a href="/page/{{page[7].id}}" title="{{page[7].name}}">{{page[7].name}}</a></li>
+                    <li><a href="/page/{{page[8].id}}" title="{{page[8].name}}">{{page[8].name}}</a></li>
+                </ul>
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="/page/{{page[9].id}}" title="{{page[9].name}}">{{page[9].name}}</a></li>
+                    <li><a href="/page/{{page[10].id}}" title="{{page[10].name}}">{{page[10].name}}</a></li>
+                    <li><a href="/page/{{page[11].id}}" title="{{page[11].name}}">{{page[11].name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="danye_right">
+
+        <div class="page_tt">{{name}}</div>
+        <div class="danye_main">
+
+            {% autoescape false %}
+            {{content}}
+            {% endautoescape %}
+        </div>
+    </div>
+
+
+    <!-- footer -->
+
+    {% include "public/footer.html" %}

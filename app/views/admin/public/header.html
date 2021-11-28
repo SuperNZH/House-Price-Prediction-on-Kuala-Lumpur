@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>E-shop Background management - {{title}}</title>
+    <link type="text/css" rel="stylesheet" href="{{url}}/css/style.css" />
+    <script type="text/javascript" src="{{public}}/js/jquery.js"></script>
+    <script type="text/javascript" src="{{public}}/js/global.js"></script>
+</head>
+<div class="bgimg"></div>
+<div class="pagetop">
+    <div class="head">
+        <div class="logo fl"><a href="http://shop.fypwork.cn/admin" ><img src="{{url}}/images/logo.png"/></a></div>
+
+        <div class="admin_t fr">
+            <ul>
+                <li><a href="/"><img border=0 src="{{url}}/images/exit4.gif"></a></li>
+                <li><a href="/admin/login/logout" onclick="return confirm('Are you sure to quit?')" ><img border=0 src="{{url}}/images/exit3.gif"></a></li>
+            </ul>
+        </div>
+
+        <div class="admin_u fr">
+            Welcome - <a title="" target="_top" href="/admin/adminuser/mod/{{session.id}}"><b>{{session.name}}</b></a>&nbsp;[Administrator] &nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="content">
+    <div class="main">
+        <div class="left">
+            <div class="fenlei">
+                <h3>Product MGT</h3>
+                <ul>
+
+                    <li  {% if menumark == 'category' %} class="sel"{% endif %}><a href="/admin/category">Prod category</a></li>
+
+                    <li  {% if menumark == 'product' %} class="sel"{% endif %}><a href="/admin/product">Prod list</a></li>
+
+                    <li  {% if menumark == 'ask' %} class="sel"{% endif %}><a href="/admin/ask">Prod consult</a></li>
+
+                    <li  {% if menumark == 'comment' %} class="sel"{% endif %}><a href="/admin/comment">Prod comment</a></li>
+                </ul>
+            </div>
+            <div class="fenlei">
+                <h3>Transactions</h3>
+                <ul>
+
+                    <li  {% if menumark == 'order' %} class="sel"{% endif %}><a href="/admin/order">Order mgt</a></li>
+
+                    <li  {% if menumark == 'payway' %} class="sel"{% endif %}><a href="/admin/payway">Payment way</a></li>
+                </ul>
+            </div>
+            <div class="fenlei">
+                <h3>Info MGT</h3>
+                <ul>
+
+                    <li  {% if menumark == 'aclass' %} class="sel"{% endif %}><a href="/admin/aclass">Article class</a></li>
+
+                    <li  {% if menumark == 'article' %} class="sel"{% endif %}><a href="/admin/article?cid=0">Article list</a></li>
+
+                    <li  {% if menumark == 'page' %} class="sel"{% endif %}><a href="/admin/page">Sin-page list</a></li>
+                </ul>
+            </div>
+            <div class="fenlei">
+                <h3>Accounts MGT</h3>
+                <ul>
+
+                    <li  {% if menumark == 'user' %} class="sel"{% endif %}><a href="/admin/user">Member list</a></li>
+
+                    <li  {% if menumark == 'adminuser' %} class="sel"{% endif %}><a href="/admin/adminuser">Admin list</a></li>
+                </ul>
+            </div>
+            <div class="fenlei">
+                <h3>Control panel</h3>
+                <ul>
+
+                    <li  {% if menumark == 'setting' %} class="sel"{% endif %}><a href="/admin/setting">Site settings</a></li>
+
+                    <li  {% if menumark == 'link' %} class="sel"{% endif %}><a href="/admin/link">Friendsh links</a></li>
+
+                    <li  {% if menumark == 'ad' %} class="sel"{% endif %}><a href="/admin/ad">Ads list</a></li>
+                </ul>
+            </div>
+        </div>

@@ -1,0 +1,46 @@
+{% include "public/header.html" %}
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">Edit Payway</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" action="/admin/payway/doupdate">
+				<input type="hidden" name="id" value="{{id}}">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+					<tr>
+						<td width="100" class="bg_f8" align="right">Payment Name:</td>
+						<td>{{name}}</td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Description:</td>
+						<td><input type="text" name="ptext" value="{{ptext}}" class="inputall input600" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">On / Off</td>
+						<td>
+							<select name="state" class="inputselect">
+								{% for k,v in qt %}
+								<option value="{{k}}" {{ k== state ? 'selected' : ''}} >{{v}}</option>
+								{% endfor %}
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="bg_f8" align="right">Payment Information:</td>
+						<td>
+
+							<textarea name="config" style="width:600px;height:150px;">{{config}}</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="bg_f8">&nbsp;</td>
+						<td><input type="submit" value="Submit" class="tjbtn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+{% include "public/footer.html" %}

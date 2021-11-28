@@ -1,0 +1,52 @@
+{% include "public/header.html" %}
+<div class="content">
+    {% include "user/menu.html" %}
+    <div class="fr huiyuan_main">
+        <h3 class="hy_rtt">{{title}}</h3>
+        <div class="asklist">
+            {% for v in data %}
+            <div style="border-bottom:1px #ddd dashed;padding:20px 0 15px">
+                <a href="/product/{{v.pid}}" target="_blank" class="fl mat3" style="border:1px solid #ddd">
+                    <img src="{{res}}/product/{{v.logo}}" width="60" height="60"></a>
+                <div class="fl" style="width:695px; margin-left:15px; display:inline;">
+                    <p><a href="/product/{{v.pid}}" target="_blank" class="cblue font14">{{v.name}}</a></p>
+                    <p class="mat5 font13">[{{v.atime|date('Y-m-d H:i')}}]咨询：{{v.asktext}}</p>
+                    {% if v.replytext !=null %}
+                    <p class="mat5 cred font13" style="text-align:left">[{{v.replytime|date('Y-m-d H:i')}}]回复：{{v.replytext}}</p>
+                    {% endif %}
+
+                </div>
+                <div class="clear"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="hy_pay"  style="text-align: center;padding:10px 0px">
+
+            <style>
+                ul.pagination {
+                    display: inline-block;
+
+                }
+                .pagination li {
+                    padding:0 10px;
+                    float:left;
+                    text-align: center;
+                    margin:0 5px;
+                    background:#cccccc;
+                }
+                .pagination .active {
+                    background:#FF922a;
+
+                }
+            </style>
+
+            {% autoescape false %}
+            {{fpage}}
+            {% endautoescape %}
+
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+{% include "public/footer.html" %}

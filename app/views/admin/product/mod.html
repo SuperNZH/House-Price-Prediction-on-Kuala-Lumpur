@@ -1,0 +1,96 @@
+{% include "public/header.html" %}
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Edit Goods</span>
+					<span class="fr fabu"><a href="/admin/product/add">Post Good</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" enctype="multipart/form-data" action="/admin/product/doupdate">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+					<input type="hidden" name="id" value="{{id}}">
+					<tr>
+						<td width="100" class="bg_f8" align="right">Product Name:</td>
+						<td colspan="3"><input type="text" name="name" value="{{name}}" class="inputall input500" maxlength="36" /></td>
+						<td rowspan="7" valign="top" width="80">
+							<img src="{{res}}/product/{{logo}}" width="160" height="170" style="border:1px solid #ddd; display:block;" />
+							<p class="mat5"><input type="file" name="logo" size="12" style="width:160px;" /></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Product Category</td>
+						<td colspan="3">
+							<select name="cid" class="inputall">
+								<option value="0" {{cid == 0 ? 'selected' : '' }}>--Root category--</option>
+
+								{% for v in cats %}
+
+								<option value="{{v.id}}" {{cid == v.id ? 'selected' : '' }}>
+								{%for i in 0..v.level*4 %}
+								&nbsp;
+								{%endfor%}
+								|-{{v.catname}}
+								</option>
+
+								{% endfor %}
+
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Selling Price</td>
+						<td width="250"><input type="text" name="money" value="{{money}}" class="inputall input100" /> <span class="c888">￥</span></td>
+						<td width="100" class="bg_f8" align="right">Freight</td>
+						<td><input type="text" name="wlmoney" value="{{wlmoney}}" class="inputall input100" /> <span class="c888">￥(0 is free shipping)</span></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Reference Price</td>
+						<td width="250"><input type="text" name="smoney" value="{{smoney}}" class="inputall input100" /> <span class="c888">￥</span></td>
+						<td width="100" class="bg_f8" align="right">Special Offer</td>
+						<td><input type="checkbox"  name="istj"  {{istj == 1 ? 'checked' : '' }} value="1"/></td>
+					</tr>
+
+					<tr>
+						<td class="bg_f8" align="right">Product ID</td>
+						<td colspan="3"><input type="text" name="mark" value="{{mark}}" class="inputall input100" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Inventory</td>
+						<td colspan="3"><input type="text" name="num" value="{{num}}" class="inputall input100" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Post Date</td>
+						<td colspan="3"><input type="text" name="atime" class="inputall input200" placeholder="Select Date" value="{{atime|date('Y-m-d')}}" id="date"></td>
+					</tr>
+				</table>
+				<div class="mat5">
+					<textarea name="content" id="edit_body" class="form-control float-left col-9" placeholder="" rows="4" resize="none">
+						{{content}}
+					</textarea>
+
+					<script src="{{public}}/js/tinymce/tinymce.min.js"></script>
+
+					<script src="{{public}}/js/fwb.js"></script>
+
+				</div>
+				<div class="mat10 center">
+					<input type="submit"  value="Submit" class="tjbtn" />
+				</div>
+			</form>
+		</div>
+
+		<script src="{{public}}/js/laydate.js"></script>
+		<script>
+			lay('#version').html('-v'+ laydate.v);
+
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#date' //指定元素
+			});
+		</script>
+
+{% include "public/footer.html" %}

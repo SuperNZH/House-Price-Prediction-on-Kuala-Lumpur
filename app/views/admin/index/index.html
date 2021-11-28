@@ -1,0 +1,69 @@
+{% include "public/header.html"%}
+
+		<div class="right">
+			<div class="admin_l">
+				<div class="admin_t_info">
+					<h3>System Info</h3>
+					<div class="banben">
+						<div class="fl font14 mat6">
+							<p>Version：<a href="https://www.eduwork.cn" target="_blank" class="cgreen">EShop1.0</a><span class="font13 mal5 corg">(Cer Num：<span id="license_num">None</span>)</span> </p>
+
+							<p>Develop Team：<u><a target="_blank" href="http://donottouch.org/" class="c666">Ni ZheHan</a></u></p>
+							<p>Email：<u style="font-family:'宋体'" class="c666">nizhehan0131@outlook.com</u></p>
+							<p>Q Q：<u><a href="#" target="_blank" class="c666">943124420</a></u></p>
+
+						</div>
+
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="admin_t_info admin_t_info1 mat10">
+					<h3>commodity statistics</h3>
+					<ul>
+						<li><a href="/admin/product?state=1" target="_blank">Goods on sale</a><span class="strong cgreen num">{{product_up}}</span> Q</li>
+						<li><a href="/admin/product?state=0" target="_blank">Goods off shelves</a><span class="strong cgreen num">{{product_down}}</span> Q</li>
+						<li><a href="/admin/product?state=1&filter=num|0" target="_blank">Goods-Out of stock</a><span class="strong cgreen num">{{product_empty}}</span> Q</li>
+						<li style="border-bottom:0"><a href="/admin/product?state=1&filter=istuijian|1" target="_blank">recommend goods</a><span class="strong cgreen num">{{product_tuijian}}</span> Q</li>
+					</ul>
+				</div>
+				<div class="admin_t_info admin_t_info1 mat10 mal10">
+					<h3>The visitor counts</h3>
+					<ul>
+						<li><a href="#" target="_blank">Today visitors</a><span class="strong cgreen num">{{iplog_today}}</span> person</li>
+						<li><a href="#" target="_blank">Yesterday the visitor</a><span class="strong cgreen num">{{iplog_lastday}}</span> person</li>
+						<li><a href="#" target="_blank">The cumulative visitors</a><span class="strong cgreen num">{{iplog_all}}</span> person</li>
+						<li style="border-bottom:0"><a href="/admin/user" target="_blank">Accumulative registered</a><span class="strong cgreen num">{{iplog_user}}</span> person</li> <!--得从用户表里面去了-->
+					</ul>
+				</div>
+				<div class="clear"></div>
+				<div class="admin_t_info mat10">
+					<h3>Transaction data</h3>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="bg01" width="120"></td>
+							<td class="bg01" width="350">Total Num</td>
+							<td class="bg01">Total Price</td>
+						</tr>
+						<tr>
+							<td style="text-align:right">Today's order</td>
+							<td class="strong num cgreen font14">{{order_today}} Q</td>
+							<td class="strong num cred font14">￥{{money_today}}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right">Yesterday's order</td>
+							<td class="strong num cgreen font14">{{order_lastday}} Q</td>
+							<td class="strong num cred font14">￥{{money_lastday}}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right">All order</td>
+							<td class="strong num cgreen font14">{{order_all}} Q</td>
+							<td class="strong num cred font14">￥{{money_all}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+		{% include "public/footer.html" %}
+

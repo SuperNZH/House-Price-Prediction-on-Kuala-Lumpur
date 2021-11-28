@@ -1,0 +1,36 @@
+{% include "public/header.html" %}
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Add the New Sin-Page</span>
+					<span class="fr fabu"><a href="/admin/page/add">Add Page</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+
+					<tr>
+						<td class="bg_f8" align="right" width="100">Page Title:</td>
+						<td><input type="text" name="name" value="" class="inputall input500" /></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<textarea name="content" id="edit_body" class="form-control float-left col-9" placeholder="" rows="4" resize="none">Content</textarea>
+
+							<script src="{{public}}/js/tinymce/tinymce.min.js"></script>
+
+							<script src="{{public}}/js/fwb.js"></script>
+
+						</td>
+					</tr>
+				</table>
+				<div class="mat10 center"><input type="submit" name="do_submit" value="Upload" class="tjbtn" /></div>
+			</form>
+		</div>
+
+{% include "public/footer.html" %}

@@ -1,0 +1,36 @@
+{% include "public/header.html" %}
+
+
+
+
+<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Edit Article Class</span>
+					<span class="fr fabu"><a href="/admin/aclass/add">Add</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" action="/admin/aclass/doupdate">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+					<input type="hidden" name="id" value="{{id}}">
+					<tr>
+						<td class="bg_f8" align="right" width="100">Class Name:</td>
+						<td><input type="text" name="catname" value="{{catname}}" class="inputall input200" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8" align="right">Class Order:</td>
+						<td><input type="text" name="ord" value="{{ord}}" class="inputall input80" /></td>
+					</tr>
+					<tr>
+						<td class="bg_f8">&nbsp;</td>
+						<td><input type="submit" value="Upload" class="tjbtn" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+		{% include "public/footer.html" %}

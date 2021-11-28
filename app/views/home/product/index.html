@@ -1,0 +1,329 @@
+{% include "public/header.html"%}
+<!-- content -->
+<div class="content">
+    <div class="now">
+        {% autoescape false %}
+        {{nowpath}}
+        {% endautoescape %}
+    </div>
+    <div class="fl proimg">
+        <img src="{{public}}/images/load.gif" data-original="{{res}}/product/{{logo}}" width="400" height="400" />
+    </div>
+    <div class="fl proinfo">
+        <h3>{{name}}</h3>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr style="color:#fff;background:#d83228; background:url({{url}}/images/jg_bg.gif) repeat;">
+                <td style="height:50px;" valign="top" width="60"><p class="mat5">价 格</p></td>
+                <td style="height:50px;">
+                    <span style="color:yellow" class="jg_price"><small>￥ </small> <span id="product_money">{{money}}</span></span>
+                    <p>市场价 <s class="num"><small>￥ </small> {{smoney}}</s>　　
+                        运费：
+                        {% if wlmoney ==0 %}
+                         卖家包邮
+                        {% else %}
+                         <span class="num"><small>￥ </small> {{wlmoney}}</span>
+                        {% endif %}
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="color:#666">销 量</td>
+                <td>共售出 <span class="cred num strong">{{sellnum}}</span> 件 <a href="javascript:find_comment();" class="cblue">(已有{{commentnum}}人评价)</a></td>
+            </tr>
+
+            <tr>
+                <td style="color:#666">数 量</td>
+                <td class="shuliang">
+                    <input type="hidden" name="prorule_id" />
+                    <span class="img1" onclick="bro_numchange('product_num', '-', 1);">-</span>
+                    <div class="shuliang_box"><input type="text" name="product_num" value="1" readonly /></div>
+                    <span class="img2" onclick="bro_numchange('product_num', '+', {{num}});">+</span>
+                    <span class="fl c888 mal5 mat2">　库存<span id="product_num">{{num}}</span>件</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    {% if state == 0 %}
+                         <img src="{{url}}/images/selldown.gif" class="fl"/>
+                    {% elseif state == 1 and num ==0  %}
+                      <img src="{{url}}/images/sellout.gif" class="fl" />
+                    {% else %}
+
+                    <a href="javascript:;" onclick="cart_add('{{id}}');" class="fl">
+                        <img src="{{url}}/images/buy.gif" />
+                    </a>
+                    {% endif %}
+                    <a href="javascript:collect_add('{{id}}');" class="sctj fl">添加到收藏夹</a>
+                </td>
+            </tr>
+        </table>
+
+        <p style="margin:10px 20px; border-top:1px #ddd dotted; padding-top:5px;">
+            上架时间：{{atime|date('Y-m-d H:i')}}　浏览次数：{{clicknum}}　　收藏人数：{{collectnum}}
+        </p>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="remai fl mat10">
+        <h3>商品分类</h3>
+        <div class="hotlist spfl">
+            {% for v in catlist %}
+            <div class="zhulei"><a href="/plist/{{v.id}}" class="sel">{{v.catname}}</a></div>
+            <div class="clear"></div>
+            <div class="zilei">
+                {% for vv in v.subcats %}
+                <a href="/plist/{{vv.id}}" class="sel">{{vv.catname}}</a>
+
+                {% endfor %}
+                <div class="clear"></div>
+            </div>
+
+            {% endfor %}
+        </div>
+        <h3 class="mat10">热销排行</h3>
+        <ul class="hotlist">
+            {% for v in selllists %}
+            <li>
+                <span class="fl hotimg">
+                    <img src="{{public}}/images/load.gif" data-original="{{res}}/product/{{v.logo}}" width="60" height="60" title="{{v.name}}" />
+                </span>
+                <span class="fl hotname">
+					<a href="/product/{{v.id}}" title="{{v.name}}" target="_blank">{{v.name}}</a>
+					<span class="cred num strong lh20"><small>￥</small>{{v.money}}</span>
+				</span>
+                <div class="clear"></div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="fr xiangqing">
+        <div class="caidan1">
+            <ul class="fl" id="js_menu">
+                <li class="sel"><a href="javascript:;">商品展示</a></li>
+                <li><a href="javascript:;">售前咨询({{asknum}})</a></li>
+                <li><a href="javascript:;">顾客评价({{commentnum}})</a></li>
+                <li><a href="javascript:;">售后服务</a></li>
+            </ul>
+            <div class="fr c666 mat10 mar10">商品货号：{{mark}}</div>
+        </div>
+
+        <div class="promain js_menuhtml">
+
+            {% autoescape false %}
+            {{content}}
+            {% endautoescape %}
+        </div>
+
+        <!--咨询 Start-->
+        <div class="promain js_menuhtml" style="display:none">
+            <div class="plmain" id="js_askhtml">
+
+                {% for v in ask_list %}
+                <ul class="mat5">
+                    <li class="fl">会员：{{v.uname}}</li>
+                    <li class="fr">咨询日期：{{v.atime|date('Y-m-d H:i')}}</li>
+                </ul>
+                <div class="padb10 mal10 lh18">
+                    <div class="mat10 font14">{{v.asktext}}</div>
+                    {% if v.replytext %}
+                        <div class="mat10 huifu">
+                            <strong class="corg">卖家回复：</strong> ({{v.replytime|date('Y-m-d H:i')}}) <br>
+                            <div class="mat5">{{v.replytext}}</div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+
+                <div class="xuxian1"></div>
+                <div class="zixunbox">
+                    <div class="fl pl_l"></div>
+                    <div class="fl pl_m">请在这里发表您的问题</div>
+                    <div class="fl pl_r"></div>
+                    <div class="clear"></div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td valign="top">用户名称：</td>
+                            <td> {% if login %} {{session.name}} {%else%} 游客 {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td valign="top">咨询内容：</td>
+                            <td><textarea name="asktext" style="width:550px;height:120px;resize:none;"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="button" value="提交" class="tj_btn"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--咨询 End-->
+        <!--评论 Start-->
+        <div class="promain js_menuhtml" style="display:none">
+            <div class="plmain" id="js_commenthtml">
+                {% for v in comment_list %}
+
+                <ul class="mat5">
+                    <li class="fl">会员：{{v.uname}}</li>
+                    <li class="fr">评价日期：{{v.atime|date('Y-m-d H:i')}}</li>
+                </ul>
+                <div class="pingjia font14">{{v.content}}</div>
+                {% endfor %}
+
+                <div class="xuxian1"></div>
+                <div class="zixunbox">
+                    <div class="fl pl_l"></div>
+                    <div class="fl pl_m">请在这里发表您的评论</div>
+                    <div class="fl pl_r"></div>
+                    <div class="clear"></div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td valign="top">用户名称：</td>
+                            <td>{% if login %} {{session.name}} {%else%} 游客 {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td valign="top">评价内容：</td>
+                            <td><textarea name="content" style="width:550px;height:120px;resize:none;"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="button" value="提交" class="tj_btn"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--评论 End-->
+        <div class="promain js_menuhtml" style="display:none">
+            <a target="_blank" href="http://www.eduwork.cn">
+                   {% autoescape false %}
+                    {{pagetext}}
+                {% endautoescape%}
+             </a>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+{% include "public/footer.html"%}
+<script charset="utf-8" src="../app/views/public/js/plugin/artdialog/jquery.artDialog.js?skin=simple"></script>
+<script charset="utf-8" src="../app/views/public/js/plugin/artdialog/plugins/iframeTools.js"></script>
+<script type="text/javascript">
+    function find_comment() {
+        $("#js_menu").find("li").eq(2).click();
+        window.location.href = "#js_menu";
+    }
+
+
+    function collect_add(id) {
+        if (!{{login}}) {
+            alert('抱歉：只有登录用户才能收藏商品！请先登录...');
+            return;
+        }
+        $.getJSON("/product/collectadd", {"pid":id},function(json){
+            alert(json.show);
+        })
+    }
+
+
+    //加入购物车
+
+    function cart_add(id) {
+        $.getJSON("/order/cartadd", {"pid":id,"pnum":$(":input[name='product_num']").val()},function(json){
+
+            if (json.result == true) {
+                art.dialog({
+                    id: 'cart_add',
+                    lock: true,
+                    content: '<div class="gw"><p>商品已成功加入购物车！</p><a class="gw2" href="/order/add"></a><a class="gw1" href="javascript:dialog_close();"></a></div>'
+                });
+            }else if (json.result == -1) {
+                alert('商品库存不足...')
+            } else {
+                alert('抱歉，加入购物车失败，请重新加入...')
+            }
+        })
+    }
+
+    function dialog_close(){
+        art.dialog.list['cart_add'].close();
+    }
+
+
+
+    $(function(){
+
+
+        //标签切换
+        $("#js_menu").find("li").click(function(){
+            $("#js_menu").find("li").removeClass("sel");
+            $(this).addClass("sel");
+            $(".js_menuhtml").hide();
+            $(".js_menuhtml").eq($("#js_menu").find("li").index($(this))).show();
+        })
+
+        //咨询发表
+        $("#js_askhtml").find(":button").click(function(){
+            //判断登陆
+            if (!{{login}}) {
+                alert('抱歉：只有登录用户才能发表咨询！请先登录...');
+                return;
+            }
+            var ask_text = $(":input[name='asktext']").val();
+            if (ask_text == '') {
+                alert('咨询内容必须填写');
+                return;
+            }
+
+
+            $.post("/product/askadd", {"pid":{{id}},"asktext":ask_text, "do_submit":true}, function(json){
+
+                if (json.result) {
+                    $("#js_askhtml").prepend(json.html);
+                    $(":input[name='asktext']").val('');
+                    alert('咨询提交成功！卖家会尽快答复...');
+                }else {
+                    alert('抱歉，咨询提交失败，请重新提交...');
+                }
+            }, 'json');
+        });
+
+
+        //评价发表
+        $("#js_commenthtml").find(":button").click(function(){
+            if (!{{login}}) {
+                alert('抱歉：只有登录用户才能发表评价！请先登录...');
+                return;
+            }
+
+            var comment_text = $(":input[name='content']").val();
+            if (comment_text == '') {
+                alert('评价内容必须填写');
+                return;
+            }
+
+            $.post("/product/commentadd", {"pid":{{id}},"content":comment_text,"do_submit":true}, function(json){
+                if (json.result) {
+                    $("#js_commenthtml").prepend(json.html);
+                    $(":input[name='content']").val('');
+                    alert('感谢您的支持，评价提交成功！');
+                }
+                else {
+                    alert('抱歉，评价提交失败，请重新提交...')
+                }
+            }, "json")
+        });
+
+
+    });
+
+</script>
+

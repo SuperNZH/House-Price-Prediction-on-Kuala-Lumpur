@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ewshop后台管理 - 商品评价</title>
+	<link type="text/css" rel="stylesheet" href="../../app/views/admin/resource/css/style.css" />
+	<script type="text/javascript" src="../../app/views/public/js/jquery.js"></script>
+	<script type="text/javascript" src="../../app/views/public/js/global.js"></script>
+</head>
+<div class="bgimg"></div>
+<div class="pagetop">
+	<div class="head">
+		<div class="logo fl"><img src="../../app/views/admin/resource/images/logo.png" /></div>
+
+		<div class="admin_t fr">
+			<ul>
+				<li><a href="/"><img border=0 src="../../app/views/admin/resource/images/exit4.gif"></a></li>
+				<li><a href="/admin/login/logout" onclick="return confirm('你确定要退出系统吗？')" ><img border=0 src="../../app/views/admin/resource/images/exit3.gif"></a></li>
+			</ul>
+		</div>
+
+		<div class="admin_u fr">
+			<b>欢迎您-</b><a title="" target="_top" href="">admin</a>&nbsp;【超级管理员】 &nbsp;&nbsp;
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="content">
+	<div class="main">
+		<div class="left">
+			<div class="fenlei">
+				<h3>商品管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/category">商品分类</a></li>
+
+					<li  ><a href="/admin/product">商品列表</a></li>
+
+					<li  ><a href="/admin/ask">商品咨询</a></li>
+
+					<li  class="sel"  ><a href="/admin/comment">商品评价</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>交易管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/order">订单管理</a></li>
+
+					<li  ><a href="/admin/payway">支付方式</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>信息管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/aclass">文章分类</a></li>
+
+					<li  ><a href="/admin/article?cid=0">文章列表</a></li>
+
+					<li  ><a href="/admin/page">单页列表</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>用户管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/user">会员列表</a></li>
+
+					<li  ><a href="/admin/adminuser">管理列表</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>控制面板</h3>
+				<ul>
+
+					<li  ><a href="/admin/setting">基本信息</a></li>
+
+					<li  ><a href="/admin/link">友情链接</a></li>
+
+					<li  ><a href="/admin/ad">广告列表</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">商品评价</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="search">
+				<div class="fr searbox">
+					<form method="get">
+						<input type="hidden" name="m" value="comment" />
+						商品名称：<input type="text" name="name" value="" class="inputtext inputtext_150" />
+						评价详情：<input type="text" name="content" value="" class="inputtext inputtext_150" />
+						用户名：<input type="text" name="uname" value="" class="inputtext inputtext_100" />
+						<input type="submit" value="搜索" class="input2" />
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" id="form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+					<tr>
+						<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+						<td class="bgtt" width="70">ID号</td>
+						<td class="bgtt">评价详情</td>
+						<td class="bgtt" width="100">用户名</td>
+						<td class="bgtt" width="88">操作</td>
+					</tr>
+
+
+					<tr>
+						<td><input type="checkbox" name="id[]" value="14" /></td>
+						<td>14</td>
+						<td class="aleft">
+							<a href="/product/896" target="_blank" class="fl mat3" style="border:1px solid #ddd"><img src="../../uploads/product/2020-0820-5f3e08d935cc4.png" width="60" height="60"></a>
+							<div class="fl" style="width:530px;margin-left:15px; display:inline;">
+								<p><a href="/product/896" target="_blank" class="cblue font14">《细说网页制作》</a></p>
+								<p class="c333 mat5 font13">[2020-08-21]评价：这本书很值得拥有！</p>
+
+							</div>
+						</td>
+						<td>user001</td>
+						<td>
+							<a href="/admin/comment/mod/14" class="admin_edit mar3">修改</a>
+							<a href="/admin/comment/del/14" class="admin_del" onclick="return confirm('你确定要删除吗？')">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="id[]" value="13" /></td>
+						<td>13</td>
+						<td class="aleft">
+							<a href="/product/898" target="_blank" class="fl mat3" style="border:1px solid #ddd"><img src="../../uploads/product/2020-0820-5f3e059c25d7b.png" width="60" height="60"></a>
+							<div class="fl" style="width:530px;margin-left:15px; display:inline;">
+								<p><a href="/product/898" target="_blank" class="cblue font14">《细说PHP》第4版</a></p>
+								<p class="c333 mat5 font13">[2020-08-20]评价：很好的书， 推荐购买。</p>
+
+							</div>
+						</td>
+						<td>user003</td>
+						<td>
+							<a href="/admin/comment/mod/13" class="admin_edit mar3">修改</a>
+							<a href="/admin/comment/del/13" class="admin_del" onclick="return confirm('你确定要删除吗？')">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="id[]" value="12" /></td>
+						<td>12</td>
+						<td class="aleft">
+							<a href="/product/898" target="_blank" class="fl mat3" style="border:1px solid #ddd"><img src="../../uploads/product/2020-0820-5f3e059c25d7b.png" width="60" height="60"></a>
+							<div class="fl" style="width:530px;margin-left:15px; display:inline;">
+								<p><a href="/product/898" target="_blank" class="cblue font14">《细说PHP》第4版</a></p>
+								<p class="c333 mat5 font13">[2020-08-20]评价：这书的作者特帅</p>
+
+							</div>
+						</td>
+						<td>user002</td>
+						<td>
+							<a href="/admin/comment/mod/12" class="admin_edit mar3">修改</a>
+							<a href="/admin/comment/del/12" class="admin_del" onclick="return confirm('你确定要删除吗？')">删除</a>
+						</td>
+					</tr>
+
+
+
+					<tr>
+						<td class="bgtt" align="center"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+						<td class="bgtt" colspan="1">
+							<span class="fl"><button href="/admin/comment/alldel" onclick="return bro_cfall(this, 'id', 'form', '批量删除')">批量删除</button></span>
+
+						</td>
+						<td class="bgtt" style="text-align: right" colspan="3">
+							<style>
+								ul.pagination {
+									margin-top: 5px;
+									display: inline-block;
+								}
+
+								.pagination li {
+									padding:2px 10px;
+									float:left;
+									margin:0 5px;
+									background:white;
+								}
+								.pagination .active {
+									background:lightskyblue;
+								}
+							</style>
+
+							<ul class="pagination"><li class="active"><a href="/admin/comment?num=1">1</a></li><li><a href="/admin/comment?num=2">2</a></li><li><a href="/admin/comment?num=2">下一页 &raquo;</a></li></ul>
+
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+		<div class="clear"></div>
+	</div>
+	<div class="foot">Copyright <span class="num">&copy;</span> 2018-2021 <a target="_blank" href="http://www.broshop.com">学习猿地 - <b>eduwork</b></a> 版权所有</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$(".list").find("tr").hover(
+				function(){
+					if ($(this).find("td").hasClass("bgtt")) return;
+					$(this).find("td").css("background-color", "#ffffdd");
+				},
+				function(){
+					if ($(this).find("td").hasClass("bgtt")) return;
+					$(this).find("td").css("background-color", "#fff");
+				}
+		)
+	})
+</script>
+
+
+
+</body>
+</html>

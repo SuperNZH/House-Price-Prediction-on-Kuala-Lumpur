@@ -1,0 +1,57 @@
+{% include "public/header.html" %}
+<div class="content">
+    {% include "user/menu.html" %}
+    <div class="fr huiyuan_main">
+        <h3 class="hy_rtt">{{title}}</h3>
+        <div class="hy_table hy_table2">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="bg_f8" style="height:auto">商品名称</td>
+                    <td class="bg_f8" width="100" style="height:auto">商品价格</td>
+                    <td class="bg_f8" width="150" style="height:auto">收藏日期</td>
+                    <td class="bg_f8" width="60" style="height:auto">操作</td>
+                </tr>
+                {% for v in data %}
+                <tr>
+                    <td class="hotimg">
+                        <a class="fl mar5" href="/product/{{v.pid}}">
+                            <img src="{{res}}/product/{{v.logo}}" width="60" height="60" /></a>
+                        <a href="/product/{{v.pid}}" title="{{v.name}}" target="_blank" class="cblue fl mat20 mal5">{{v.name}}</a>
+                        <div class="clear"></div>
+                    </td>
+                    <td class="money1"><small>￥</small>{{v.money}}</td>
+                    <td class="c666">{{v.atime|date('Y-m-d H:i')}}</td>
+                    <td><a class="cblue" href="/user/collectdel?id={{v.id}}&pid={{v.pid}}" onclick="return confirm('确定要删除{{v.name}}商品的收藏吗?')">删除</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="hy_pay"  style="text-align: center;padding:10px 0px">
+
+                <style>
+                    ul.pagination {
+                        display: inline-block;
+
+                    }
+                    .pagination li {
+                        padding:0 10px;
+                        float:left;
+                        text-align: center;
+                        margin:0 5px;
+                        background:#cccccc;
+                    }
+                    .pagination .active {
+                        background:#FF922a;
+
+                    }
+                </style>
+                {% autoescape false %}
+                {{fpage}}
+                {% endautoescape %}
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+{% include "public/footer.html" %}</html>

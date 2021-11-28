@@ -1,0 +1,153 @@
+{% include "public/header.html" %}
+
+<!-- content -->
+
+
+<div class="width980">
+    <div class="loginbox registbox">
+        <div class="logintt">用户注册</div>
+        <form method="post" action="/user/register" id="form"  onsubmit="return validate('click')">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="regist_table">
+                <tr>
+                    <td width="15%" align="right">用户名:</td>
+                    <td width="33%"><input type="text" name="name" class="input1" /></td>
+                    <td width="52%"><span id="name" class="stats1">由5-15位字符组成（可以是字母、汉字、数字）</span></td>
+                </tr>
+                <tr>
+                    <td align="right">密码:</td>
+                    <td><input type="password" name="pw" class="input1" /></td>
+                    <td><span  id="pw" class="stats1">密码由6-16个字符组成!</span></td>
+                </tr>
+                <tr>
+                    <td align="right">确认密码:</td>
+                    <td><input type="password" name="pw1" class="input1" /></td>
+                    <td><span id="pw1" class="stats1">和上面的密码一致</span></td>
+                </tr>
+                <tr>
+                    <td align="right">邮箱:</td>
+                    <td><input type="text" name="email" class="input1" /></td>
+                    <td><span id="email" class="stats1">请填写您的常用邮箱，以方便与您联系</span></td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td>
+                        <input type="submit" class="btn_05" value="立即注册"  name="do_submit" style="margin:0" /></td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="{{public}}/js/ajax3.0.js"></script>
+<script type="text/javascript">
+    var rclick=null;
+    function notnull(val){
+        return val.match(/^\S+$/) ? true : false;
+    }
+
+
+    //设置三种状态
+    function setStats(objstr,mess,check) {
+        obj = document.getElementsByName(objstr)[0];
+
+
+
+        obj.onfocus=function(){
+            cobj = document.getElementById(objstr);
+            cobj.className="stats1";
+            cobj.innerHTML=mess;
+
+        }
+
+
+        obj.onblur=function(){
+            cobj = document.getElementById(objstr);
+            info=check(this.value, mess);
+            if(info[0]){
+                cobj.className="stats2";
+                cobj.innerHTML="输入正确";
+            }else{
+                cobj.className="stats3";
+                cobj.innerHTML=info[1];
+
+            }
+        }
+
+        if(rclick=='click')
+            obj.onblur();
+
+    }
+    //加载时用
+    window.onload=validate;
+    //点注册时使用
+    function validate(click){
+        if(click)
+            rclick=click;
+
+        var fg=true;
+
+
+        setStats("name", '由5-15位字符组成（可以是字母、汉字、数字）',function(val, mess){
+            var info=[false, mess];
+            if(notnull(val) && val.length >=5 && val.length <=15 ){
+                Ajax('html',false).get("/user/register?name="+val, function(data){
+
+                    info[0]=eval(data);
+
+                    if(!info[0]){
+                        info[1]="用户 "+val+" 已经存在";
+                        fg=false;
+                    }
+
+                })
+            }else{
+                fg=false;
+            }
+
+            return info;
+
+        });
+
+        setStats("pw",'密码由6-16个字符组成!', function(val, mess){
+            var info=[false, mess];
+            if(notnull(val) && val.length >=6 && val.length <=16 ){
+                info[0]=true;
+            }else{
+                fg=false;
+            }
+            return info;
+        });
+
+        setStats("pw1",'和上面输入的密码要一致!',function(val, mess){
+            var userpwd = document.getElementsByName('pw')[0];
+            var info=[false, mess];
+            if(val==userpwd.value && val.length >= 6  && val.length <=16 ){
+                info[0]=true;
+            }else{
+                fg=false;
+            }
+            return info;
+        });
+
+        setStats("email", '请填写您的常用邮箱，以方便与您联系!', function(val, mess){
+            var info=[false, mess];
+
+            if(val.match(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)){
+                info[0]=true;
+            }else{
+                fg=false;
+            }
+            return info;
+        });
+
+        if(click=='click')
+            return fg;
+    }
+</script>
+<!--content End-->
+
+
+<!-- footer -->
+
+{% include "public/footer.html" %}

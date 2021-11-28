@@ -1,0 +1,191 @@
+{% include "public/header.html" %}
+<!-- content -->
+
+{% for v in ads %}
+{% if v.position == 1 %}
+<div class="ad980">
+    {% if v.url is null %}
+    <img src="{{res}}/ad/{{v.logo}}" width="980" height="80"/>
+    {%else%}
+    <a href="{{v.url}}" target="_blank">
+        <img src="{{res}}/ad/{{v.logo}}" width="980" height="80"/>
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+{% endfor %}
+
+
+<div class="content">
+    <!--特价商品 Start-->
+    <div class="tj fl">
+        <div class="index_tj_tt" style="border:0;">
+            <h3>Special Offer</h3>
+        </div>
+        <div class="tj_list">
+            <ul class="hotlist index_tj" style="height:421px;border:0px">
+
+                {% for v in tjs %}
+                <li>
+                    <span class="fl hotimg">
+                        <a href="/product/{{v.id}}" title="{{v.name}}" target="_blank">
+                            <img src="{{public}}/images/load.gif" data-original="{{res}}/product/{{v.logo}}" width="60" height="60" title="{{v.name}}"/>
+                        </a>
+                    </span>
+                    <span class="fl hotname tjname_index">
+							<a href="/product/{{v.id}}" title="{{v.name}}" target="_blank">{{v.name}}</a>
+							<span class="lh20">
+                                <span class="cred num strong">￥</span>
+                                <span class="num1 cred">{{v.money}}</span>
+                                <s class="num c888">￥ {{v.smoney}}</s>
+                            </span>
+						</span>
+                    <div class="clear"></div>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    <!--特价商品 End-->
+
+    <!--幻灯片 Start -->
+    <div class="jdt fl">
+        <div id="jdtslide" style="visibility:hidden;">
+            {% for v in ads %}
+            {% if v.position == 5 %}
+            <a href="{{v.url}}">
+                <img src="{{res}}/ad/{{v.logo}}" alt="" width="533" height="300"/>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <!--幻灯片 end -->
+
+    <!--网站公告 Start-->
+    <div class="fr action_list">
+        <div class="action_tt"><h3 style="width:60%;float:left;">Announcement</h3>
+            <div style="width:30%;float:right;text-align:right;">
+                <a style="color:white;padding-right: 10px;" href="/alist/1">More>></a>
+            </div>
+        </div>
+        <ul>
+            {% for v in notices %}
+            <li><a href="/article/{{v.id}}" title="{{v.name}}" target="_blank">{{v.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--网站公告 end-->
+
+<div class="index_main">
+    <!--新品推荐 Start-->
+    <div class="pro_tuijian">
+        <div class="index_fenlei_tt" style="border:0;"><h3>Recommendation</h3></div>
+        <div class="tuijian_list">
+
+            {% for v in tuijians %}
+            <div class="prolist_1">
+                <p class="prolist_img">
+                    <a href="/product/{{v.id}}" title="{{v.name}}" target="_blank">
+                        <img  src="{{public}}/images/load.gif" data-original="{{res}}/product/{{v.logo}}" width="150" height="150" title="{{v.name}}"/>
+                    </a>
+                </p>
+                <p class="prolist_name">
+                    <a href="/product/{{v.id}}" title="{{v.name}}" target="_blank">{{v.name}}</a>
+                </p>
+                <p>
+                    <span class="money1"><small>￥</small>{{v.money}}</span>
+                    <s class="num c888"><small>￥</small>{{v.smoney}}</s>
+                </p>
+            </div>
+            {% endfor %}
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!--新品推荐 end-->
+
+
+    <!--所有分类 和对应分类热销排行 Start-->
+    {% for v in allcats %}
+    <div class="index_fenlei mat10">
+        <div class="index_fenlei_tt">
+            <h3 class="fl">{{v.catname}}</h3>
+            <span class="fr"><a href="/plist/{{v.id}}" title="{{v.catname}}"target="_blank">More>></a></span>
+        </div>
+
+        <div class="index_prolist">
+
+            <div class="fl prolist_left">
+                {% for nl in v.newlists %}
+                <div class="prolist_1">
+                    <p class="prolist_img">
+                        <a href="/product/{{nl.id}}" title="{{nl.name}}" target="_blank">
+                            <img src="{{public}}/images/load.gif" data-original="{{res}}/product/{{nl.logo}}" width="150" height="150" title="{{nl.name}}"/>
+                        </a>
+                    </p>
+                    <p class="prolist_name">
+                        <a href="/product/{{nl.id}}" title="{{nl.name}}" target="_blank">{{nl.name}}</a>
+                    </p>
+                    <p>
+                        <span class="money1"><small>￥</small>{{nl.money}}</span>
+                        <s class="num c888"><small>￥</small>{{nl.smoney}}</s>
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="fr prolist_right">
+                <div class="prolist_right_tt"><h3>【{{v.catname}}】<h style="color:red">HOT</h></h3></div>
+                <ul class="hotlist index_hot" style="height:421px;">
+                    {% for sl in v.selllists %}
+                    <li>
+                        <span class="fl hotimg">
+                            <a href="/product/{{sl.id}}" title="{{sl.name}}" target="_blank">
+                                <img src="{{public}}/images/load.gif" data-original="{{res}}/product/{{sl.logo}}" width="60" height="60" title="{{sl.name}}"/>
+                            </a>
+						</span>
+
+                        <span class="fl hotname hotname_index">
+                            <a href="/product/{{sl.id}}" title="{{sl.name}}" target="_blank">{{sl.name}}</a>
+                            <span class="lh20">
+                                <span class="cred num strong"><small>￥</small></span>
+                                <span class="num1 cred">{{sl.money}}</span>
+                            </span>
+                        </span>
+
+                        <div class="clear"></div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    {% endfor %}
+    <!--所有分类 和对应分类热销排行 End-->
+
+</div>
+
+{% for v in ads %}
+{% if v.position == 2 %}
+<div class="ad980">
+    {% if v.url is null %}
+    <img src="{{res}}/ad/{{v.logo}}" width="980" height="80"/>
+    {%else%}
+    <a href="{{v.url}}" target="_blank">
+        <img src="{{res}}/ad/{{v.logo}}" width="980" height="80"/>
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+{% endfor %}
+
+<!-- footer -->
+{% include "public/footer.html" %}

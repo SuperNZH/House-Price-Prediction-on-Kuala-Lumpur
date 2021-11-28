@@ -1,0 +1,13 @@
+RewriteEngine On
+# 从更目录找
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAE} !-f
+RewriteCond %{REQUEST_FILENAE} !-d
+
+RewriteCond %{REQUEST_URI} !^.*(\.css|\.js|\.png|\.gif|\.jpg|\.jpeg)
+
+
+RewriteRule ^(.*)$ index.php?$1 [QSA,L]
+
+

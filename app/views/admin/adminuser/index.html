@@ -1,0 +1,47 @@
+{% include "public/header.html" %}
+
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">
+					<span class="fl">Administrators List</span>
+					<span class="fr fabu"><a href="/admin/adminuser/add">Add</a></span>
+				</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" id="form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list mat5">
+					<tr>
+						<td class="bgtt" width="50">ID Num</td>
+						<td class="bgtt">Account</td>
+						<td class="bgtt" width="150">Last login time </td>
+						<td class="bgtt" width="88">Operate</td>
+					</tr>
+
+					{% for v in data  %}
+					<tr>
+						<td>{{v.id}}</td>
+						<td>{{v.name}}</td>
+						<td>{{v.ltime|date('Y-m-d H:i')}}</td>
+						<td>
+							<a href="/admin/adminuser/mod/{{v.id}}" class="admin_edit mar3">Edit</a>
+
+							{% if v.name != 'admin' %}
+
+							<a href="/admin/adminuser/del/{{v.id}}" class="admin_del" onclick="return confirm('You sure want to delete [{{v.name}}]? ')">Del</a>
+
+							{% endif %}
+						</td>
+					</tr>
+					{% endfor %}
+
+				</table>
+			</form>
+		</div>
+
+
+
+{% include "public/footer.html" %}

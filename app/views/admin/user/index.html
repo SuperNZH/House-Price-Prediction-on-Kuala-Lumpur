@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ewshop后台管理 - 会员列表</title>
+	<link type="text/css" rel="stylesheet" href="../../app/views/admin/resource/css/style.css" />
+	<script type="text/javascript" src="../../app/views/public/js/jquery.js"></script>
+	<script type="text/javascript" src="../../app/views/public/js/global.js"></script>
+</head>
+<div class="bgimg"></div>
+<div class="pagetop">
+	<div class="head">
+		<div class="logo fl"><img src="../../app/views/admin/resource/images/logo.png" /></div>
+
+		<div class="admin_t fr">
+			<ul>
+				<li><a href="/"><img border=0 src="../../app/views/admin/resource/images/exit4.gif"></a></li>
+				<li><a href="/admin/login/logout" onclick="return confirm('你确定要退出系统吗？')" ><img border=0 src="../../app/views/admin/resource/images/exit3.gif"></a></li>
+			</ul>
+		</div>
+
+		<div class="admin_u fr">
+			<b>欢迎您-</b><a title="" target="_top" href="">admin</a>&nbsp;【超级管理员】 &nbsp;&nbsp;
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="content">
+	<div class="main">
+		<div class="left">
+			<div class="fenlei">
+				<h3>商品管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/category">商品分类</a></li>
+
+					<li  ><a href="/admin/product">商品列表</a></li>
+
+					<li  ><a href="/admin/ask">商品咨询</a></li>
+
+					<li  ><a href="/admin/comment">商品评价</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>交易管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/order">订单管理</a></li>
+
+					<li  ><a href="/admin/payway">支付方式</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>信息管理</h3>
+				<ul>
+
+					<li  ><a href="/admin/aclass">文章分类</a></li>
+
+					<li  ><a href="/admin/article?cid=0">文章列表</a></li>
+
+					<li  ><a href="/admin/page">单页列表</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>用户管理</h3>
+				<ul>
+
+					<li  class="sel"  ><a href="/admin/user">会员列表</a></li>
+
+					<li  ><a href="/admin/adminuser">管理列表</a></li>
+				</ul>
+			</div>
+			<div class="fenlei">
+				<h3>控制面板</h3>
+				<ul>
+
+					<li  ><a href="/admin/setting">基本信息</a></li>
+
+					<li  ><a href="/admin/link">友情链接</a></li>
+
+					<li  ><a href="/admin/ad">广告列表</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="right">
+			<div class="now">
+				<div class="now_l"></div>
+				<div class="now_m">会员列表</div>
+				<div class="now_r"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="search">
+				<div class="fr searbox">
+					<form method="get" action="/admin/user">
+						<input type="hidden" name="m" value="user" />
+						用户名：<input type="text" name="name" value="" class="inputtext inputtext_150" />
+						联系电话：<input type="text" name="phone" value="" class="inputtext inputtext_150" />
+						常用邮箱：<input type="text" name="email" value="" class="inputtext inputtext_150" />
+						<select name="orderby" class="inputselect">
+							<option value=""  selected  >默认排序</option>
+							<option value="ltime"  >最近登录</option>
+						</select>
+						<input type="submit" value="搜索" class="input2  tjbtn" />
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<form method="post" id="form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+					<tr>
+						<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+						<td class="bgtt" width="50">ID号</td>
+						<td class="bgtt">用户名</td>
+						<td class="bgtt" width="120">联系电话</td>
+						<td class="bgtt" width="180">常用邮箱</td>
+						<td class="bgtt" width="80">注册日期</td>
+						<td class="bgtt" width="120">上次登录</td>
+						<td class="bgtt" width="88">操作</td>
+					</tr>
+
+					<tr>
+						<td><input type="checkbox" name="id[]" value="10"></td>
+						<td>10</td>
+						<td>user005</td>
+						<td></td>
+						<td>user005@eduwork.cn</td>
+						<td><span>2020-08-20 07:07</span></td>
+						<td><span>2020-08-20 07:07</span></td>
+						<td>
+							<a href="/admin/user/mod/10" class="admin_edit mar3">修改</a>
+							<a href="/admin/user/del/10" class="admin_del" onclick="return confirm('确定要删除会员user005吗？')">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="id[]" value="9"></td>
+						<td>9</td>
+						<td>user004</td>
+						<td></td>
+						<td>user004@eduwork.cn</td>
+						<td><span>2020-08-20 07:07</span></td>
+						<td><span>2020-08-20 07:07</span></td>
+						<td>
+							<a href="/admin/user/mod/9" class="admin_edit mar3">修改</a>
+							<a href="/admin/user/del/9" class="admin_del" onclick="return confirm('确定要删除会员user004吗？')">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="id[]" value="8"></td>
+						<td>8</td>
+						<td>user003</td>
+						<td></td>
+						<td>user003@eduwork.cn</td>
+						<td><span>2020-08-20 07:06</span></td>
+						<td><span>2020-08-20 09:22</span></td>
+						<td>
+							<a href="/admin/user/mod/8" class="admin_edit mar3">修改</a>
+							<a href="/admin/user/del/8" class="admin_del" onclick="return confirm('确定要删除会员user003吗？')">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="bgtt"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+						<td class="bgtt aleft" colspan="2">
+							<span class="fl"><button href="/admin/user/alldel" onclick="return bro_cfall(this, 'id', 'form', '批量删除')">批量删除</button></span>
+
+						</td>
+						<td class="bgtt" style="text-align: right" colspan="5">
+							<style>
+								ul.pagination {
+									margin-top: 5px;
+									display: inline-block;
+								}
+
+								.pagination li {
+									padding:2px 10px;
+									float:left;
+									margin:0 5px;
+									background:white;
+								}
+								.pagination .active {
+									background:lightskyblue;
+								}
+							</style>
+
+							<ul class="pagination"><li class="active"><a href="/admin/user?&amp;num=1">1</a></li><li><a href="/admin/user?&amp;num=2">2</a></li><li><a href="/admin/user?&amp;num=2">下一页 &raquo;</a></li></ul>
+
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+
+		<div class="clear"></div>
+	</div>
+	<div class="foot">Copyright <span class="num">&copy;</span> 2018-2021 <a target="_blank" href="http://www.broshop.com">学习猿地 - <b>eduwork</b></a> 版权所有</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$(".list").find("tr").hover(
+				function(){
+					if ($(this).find("td").hasClass("bgtt")) return;
+					$(this).find("td").css("background-color", "#ffffdd");
+				},
+				function(){
+					if ($(this).find("td").hasClass("bgtt")) return;
+					$(this).find("td").css("background-color", "#fff");
+				}
+		)
+	})
+</script>
+
+
+
+</body>
+</html>
