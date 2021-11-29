@@ -8,7 +8,7 @@
         {% endautoescape %}
     </div>
     <div class="remai fl">
-        <h3>商品分类</h3>
+        <h3>Category</h3>
         <div class="hotlist spfl">
 
             {% for v in catlist %}
@@ -25,7 +25,7 @@
             {% endfor %}
 
         </div>
-        <h3 class="mat10">热销排行</h3>
+        <h3 class="mat10"><h style="color:red">HOT</h></h3>
         <ul class="hotlist">
             {% for v in selllists %}
             <li>
@@ -43,27 +43,27 @@
     </div>
     <div class="fr xiangqing" style="margin-top:0">
         <div class="caidan">
-            <h3 class="fl">商品列表</h3>
+            <h3 class="fl">Products</h3>
             <ul class="fr">
                 <li class="prolist_px">
-                    <a href="/plist/{{pid}}">默认排序</a>
+                    <a href="/plist/{{pid}}">Default</a>
                 </li>
                 <li class="prolist_px">
                     {% if order.orderby == "clicknum_asc" %}
-                    <a href="/plist/{{pid}}?orderby=clicknum_desc{{name}}"><i class="i1"></i>按人气</a>
+                    <a href="/plist/{{pid}}?orderby=clicknum_desc{{name}}"><i class="i1"></i>Hot</a>
                     {% elseif order.orderby == "clicknum_desc" %}
-                    <a href="/plist/{{pid}}?orderby=clicknum_asc{{name}}"><i class="i2"></i>按人气</a>
+                    <a href="/plist/{{pid}}?orderby=clicknum_asc{{name}}"><i class="i2"></i>Hot</a>
                     {% else %}
-                    <a href="/plist/{{pid}}?orderby=clicknum_desc{{name}}">按人气</a>
+                    <a href="/plist/{{pid}}?orderby=clicknum_desc{{name}}">Hot</a>
                     {% endif %}
                 </li>
                 <li class="prolist_px">
                     {% if order.orderby == "sellnum_asc" %}
-                    <a href="/plist/{{pid}}?orderby=sellnum_desc{{name}}"><i class="i1"></i>按销量</a>
+                    <a href="/plist/{{pid}}?orderby=sellnum_desc{{name}}"><i class="i1"></i>Sold</a>
                     {% elseif order.orderby == "sellnum_desc" %}
-                    <a href="/plist/{{pid}}?orderby=sellnum_asc{{name}}"><i class="i2"></i>按销量</a>
+                    <a href="/plist/{{pid}}?orderby=sellnum_asc{{name}}"><i class="i2"></i>Sold</a>
                     {% else %}
-                    <a href="/plist/{{pid}}?orderby=sellnum_desc{{name}}">按销量</a>
+                    <a href="/plist/{{pid}}?orderby=sellnum_desc{{name}}">Sold</a>
                     {% endif %}
 
 
@@ -71,11 +71,11 @@
                 </li>
                 <li class="prolist_px">
                     {% if order.orderby == "money_asc" %}
-                    <a href="/plist/{{pid}}?orderby=money_desc{{name}}"><i class="i1"></i>按价格</a>
+                    <a href="/plist/{{pid}}?orderby=money_desc{{name}}"><i class="i1"></i>Price</a>
                     {% elseif order.orderby == "money_desc" %}
-                    <a href="/plist/{{pid}}?orderby=money_asc{{name}}"><i class="i2"></i>按价格</a>
+                    <a href="/plist/{{pid}}?orderby=money_asc{{name}}"><i class="i2"></i>Price</a>
                     {% else %}
-                    <a href="/plist/{{pid}}?orderby=money_desc{{name}}">按价格</a>
+                    <a href="/plist/{{pid}}?orderby=money_desc{{name}}">Price</a>
                     {% endif %}
 
                 </li>

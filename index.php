@@ -100,11 +100,11 @@
 
     //前台首页控制器
     Macaw::get('/', 'home\Index@index');   // 首页
-//    Macaw::get('/plist/(:num)', 'home\Product@plist');  // 产品列表页面
-//    Macaw::get('/product/(:num)', 'home\Product@index');  // 产品详情页面
-//    Macaw::get('/page/(:num)', 'home\Page@index');  // 单页详情页面
-//    Macaw::get('/alist/(:num)', 'home\Article@alist');  // 文章列表页面
-//    Macaw::get('/article/(:num)', 'home\Article@index');  // 文章详情页面
+    Macaw::get('/plist/(:num)', 'home\Product@plist');  // 产品列表页面
+    Macaw::get('/product/(:num)', 'home\Product@index');  // 产品详情页面
+    Macaw::get('/page/(:num)', 'home\Page@index');  // 单页详情页面
+    Macaw::get('/alist/(:num)', 'home\Article@alist');  // 文章列表页面
+    Macaw::get('/article/(:num)', 'home\Article@index');  // 文章详情页面
 
 //    // 用户注册、登录、退出
 //    Macaw::any("/user/register", 'home\User@register');

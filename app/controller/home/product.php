@@ -93,7 +93,7 @@
 
             // 导航
 
-            $nowpath = "您现在的位置：<a href='/'>首页</a>";
+            $nowpath = "Position: <a href='/'>Home</a>";
 
             $cats = $db->select('category', '*', ['ORDER'=>['ord'=>'ASC', 'id'=>'DESC']]);
 
@@ -212,15 +212,15 @@
             $db = new BaseDao();
             $show = '';
             if($db->count('collect', ['uid'=>$collect['uid'], 'pid'=>$_GET['pid']])>0){
-                $show = '您已经收藏过该商品了， 请不要重复收藏...';
+                $show = 'You have already collected it.';
             }else{
                 $collect['atime'] = time();
 
                 if($db->insert('collect', $collect)) {
                     $db->update('product', ['collectnum[+]'=>1], ['id'=>$_GET['pid']]);
-                    $show = '商品收藏成功...';
+                    $show = 'Collected Successfully!';
                 }else{
-                    $show = '商品收藏失败...';
+                    $show = 'Collected Unsuccessfully!';
                 }
             }
 
