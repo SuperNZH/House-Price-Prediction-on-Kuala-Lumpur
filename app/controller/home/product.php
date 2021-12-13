@@ -15,7 +15,7 @@
 
             // 导航
 
-            $nowpath = "您现在的位置：<a href='/'>首页</a>";
+            $nowpath = "Position: <a href='/'>Home</a>";
 
             $cats = $db->select('category', '*', ['ORDER'=>['ord'=>'ASC', 'id'=>'DESC']]);
 

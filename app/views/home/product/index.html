@@ -13,13 +13,13 @@
         <h3>{{name}}</h3>
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr style="color:#fff;background:#d83228; background:url({{url}}/images/jg_bg.gif) repeat;">
-                <td style="height:50px;" valign="top" width="60"><p class="mat5">价 格</p></td>
+                <td style="height:50px;" valign="top" width="60"><p class="mat5">Price</p></td>
                 <td style="height:50px;">
                     <span style="color:yellow" class="jg_price"><small>￥ </small> <span id="product_money">{{money}}</span></span>
-                    <p>市场价 <s class="num"><small>￥ </small> {{smoney}}</s>　　
-                        运费：
+                    <p>Market price: <s class="num"><small>￥ </small>{{smoney}}</s>　　
+                        Freight:
                         {% if wlmoney ==0 %}
-                         卖家包邮
+                         FREE
                         {% else %}
                          <span class="num"><small>￥ </small> {{wlmoney}}</span>
                         {% endif %}
@@ -28,18 +28,18 @@
             </tr>
 
             <tr>
-                <td style="color:#666">销 量</td>
-                <td>共售出 <span class="cred num strong">{{sellnum}}</span> 件 <a href="javascript:find_comment();" class="cblue">(已有{{commentnum}}人评价)</a></td>
+                <td style="color:#666">Sold</td>
+                <td>Total: <span class="cred num strong">{{sellnum}}</span>  <a href="javascript:find_comment();" class="cblue">({{commentnum}} people have commented)</a></td>
             </tr>
 
             <tr>
-                <td style="color:#666">数 量</td>
+                <td style="color:#666">Amount</td>
                 <td class="shuliang">
                     <input type="hidden" name="prorule_id" />
                     <span class="img1" onclick="bro_numchange('product_num', '-', 1);">-</span>
                     <div class="shuliang_box"><input type="text" name="product_num" value="1" readonly /></div>
                     <span class="img2" onclick="bro_numchange('product_num', '+', {{num}});">+</span>
-                    <span class="fl c888 mal5 mat2">　库存<span id="product_num">{{num}}</span>件</span>
+                    <span class="fl c888 mal5 mat2"> Inventory <span id="product_num">{{num}}</span></span>
                 </td>
             </tr>
 
@@ -56,13 +56,13 @@
                         <img src="{{url}}/images/buy.gif" />
                     </a>
                     {% endif %}
-                    <a href="javascript:collect_add('{{id}}');" class="sctj fl">添加到收藏夹</a>
+                    <a href="javascript:collect_add('{{id}}');" class="sctj fl">Add to likes</a>
                 </td>
             </tr>
         </table>
 
         <p style="margin:10px 20px; border-top:1px #ddd dotted; padding-top:5px;">
-            上架时间：{{atime|date('Y-m-d H:i')}}　浏览次数：{{clicknum}}　　收藏人数：{{collectnum}}
+            First Shelf Date：{{atime|date('Y-m-d H:i')}}　Views：{{clicknum}}　　Likes：{{collectnum}}
         </p>
 
         <div class="clear"></div>
@@ -71,7 +71,7 @@
     <div class="clear"></div>
 
     <div class="remai fl mat10">
-        <h3>商品分类</h3>
+        <h3>Category</h3>
         <div class="hotlist spfl">
             {% for v in catlist %}
             <div class="zhulei"><a href="/plist/{{v.id}}" class="sel">{{v.catname}}</a></div>
@@ -86,7 +86,7 @@
 
             {% endfor %}
         </div>
-        <h3 class="mat10">热销排行</h3>
+        <h3 class="mat10"><h style="color:red">HOT</h></h3>
         <ul class="hotlist">
             {% for v in selllists %}
             <li>
@@ -106,12 +106,12 @@
     <div class="fr xiangqing">
         <div class="caidan1">
             <ul class="fl" id="js_menu">
-                <li class="sel"><a href="javascript:;">商品展示</a></li>
-                <li><a href="javascript:;">售前咨询({{asknum}})</a></li>
-                <li><a href="javascript:;">顾客评价({{commentnum}})</a></li>
-                <li><a href="javascript:;">售后服务</a></li>
+                <li class="sel"><a href="javascript:;">Description</a></li>
+                <li><a href="javascript:;">Pre-Consult({{asknum}})</a></li>
+                <li><a href="javascript:;">Customer Comments({{commentnum}})</a></li>
+                <li><a href="javascript:;">After Sales</a></li>
             </ul>
-            <div class="fr c666 mat10 mar10">商品货号：{{mark}}</div>
+            <div class="fr c666 mat10 mar10">Product ID：{{mark}}</div>
         </div>
 
         <div class="promain js_menuhtml">
@@ -127,14 +127,14 @@
 
                 {% for v in ask_list %}
                 <ul class="mat5">
-                    <li class="fl">会员：{{v.uname}}</li>
-                    <li class="fr">咨询日期：{{v.atime|date('Y-m-d H:i')}}</li>
+                    <li class="fl">Name: {{v.uname}}</li>
+                    <li class="fr">Date: {{v.atime|date('Y-m-d H:i')}}</li>
                 </ul>
                 <div class="padb10 mal10 lh18">
                     <div class="mat10 font14">{{v.asktext}}</div>
                     {% if v.replytext %}
                         <div class="mat10 huifu">
-                            <strong class="corg">卖家回复：</strong> ({{v.replytime|date('Y-m-d H:i')}}) <br>
+                            <strong class="corg">REPLY: </strong> ({{v.replytime|date('Y-m-d H:i')}}) <br>
                             <div class="mat5">{{v.replytext}}</div>
                         </div>
                     {% endif %}
@@ -145,21 +145,21 @@
                 <div class="xuxian1"></div>
                 <div class="zixunbox">
                     <div class="fl pl_l"></div>
-                    <div class="fl pl_m">请在这里发表您的问题</div>
+                    <div class="fl pl_m">Please Post your Questions Here</div>
                     <div class="fl pl_r"></div>
                     <div class="clear"></div>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td valign="top">用户名称：</td>
-                            <td> {% if login %} {{session.name}} {%else%} 游客 {% endif %}</td>
+                            <td valign="top">Name: </td>
+                            <td> {% if login %} {{session.name}} {%else%} Visitor {% endif %}</td>
                         </tr>
                         <tr>
-                            <td valign="top">咨询内容：</td>
+                            <td valign="top">Content: </td>
                             <td><textarea name="asktext" style="width:550px;height:120px;resize:none;"></textarea></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="button" value="提交" class="tj_btn"></td>
+                            <td><input type="button" value="Submit" class="tj_btn"></td>
                         </tr>
                     </table>
                 </div>
@@ -172,8 +172,8 @@
                 {% for v in comment_list %}
 
                 <ul class="mat5">
-                    <li class="fl">会员：{{v.uname}}</li>
-                    <li class="fr">评价日期：{{v.atime|date('Y-m-d H:i')}}</li>
+                    <li class="fl">Name: {{v.uname}}</li>
+                    <li class="fr">Date: {{v.atime|date('Y-m-d H:i')}}</li>
                 </ul>
                 <div class="pingjia font14">{{v.content}}</div>
                 {% endfor %}
@@ -181,21 +181,21 @@
                 <div class="xuxian1"></div>
                 <div class="zixunbox">
                     <div class="fl pl_l"></div>
-                    <div class="fl pl_m">请在这里发表您的评论</div>
+                    <div class="fl pl_m">Post your comments here</div>
                     <div class="fl pl_r"></div>
                     <div class="clear"></div>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td valign="top">用户名称：</td>
-                            <td>{% if login %} {{session.name}} {%else%} 游客 {% endif %}</td>
+                            <td valign="top">Name: </td>
+                            <td>{% if login %} {{session.name}} {%else%} Visitor {% endif %}</td>
                         </tr>
                         <tr>
-                            <td valign="top">评价内容：</td>
+                            <td valign="top">Content: </td>
                             <td><textarea name="content" style="width:550px;height:120px;resize:none;"></textarea></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="button" value="提交" class="tj_btn"></td>
+                            <td><input type="button" value="Submit" class="tj_btn"></td>
                         </tr>
                     </table>
                 </div>
@@ -203,7 +203,7 @@
         </div>
         <!--评论 End-->
         <div class="promain js_menuhtml" style="display:none">
-            <a target="_blank" href="http://www.eduwork.cn">
+            <a target="_blank" href="http://shop.fypwork.cn/">
                    {% autoescape false %}
                     {{pagetext}}
                 {% endautoescape%}

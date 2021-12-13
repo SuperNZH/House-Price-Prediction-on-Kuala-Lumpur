@@ -29,10 +29,10 @@ class Home extends BaseControllers {
 
     function init() {
         $db = new BaseDao();
-//
-//        $this->assign('login', ew_login('user'));
-//        $this->assign('session', $_SESSION);
-//
+
+        $this->assign('login', ew_login('user'));
+        $this->assign('session', $_SESSION);
+
         // 获取系统设置信息 setting
         $allsetting  = $db->select('setting', '*');
 
@@ -43,6 +43,7 @@ class Home extends BaseControllers {
         }
 
         $setting['web_qqs'] = explode(',', $setting['web_qq']);
+
 
 
         $this->assign('setting', $setting);
@@ -57,6 +58,7 @@ class Home extends BaseControllers {
         // 广告
         $this->assign('ads', $db->select('ad', '*', ['ORDER'=>['ord'=>'ASC', 'id'=>'ASC']]));
 
+
         // 所有单页信息
         $this->assign('page', $db->select('page', ['id','name'], ['ORDER'=>['ord'=>'ASC']]));
 
@@ -64,30 +66,30 @@ class Home extends BaseControllers {
         // 友情链接
         $this->assign('links', $db->select('link', '*',  ['ORDER'=>['ord'=>'ASC', 'id'=>'ASC'], 'LIMIT'=>10]));
 
-//        // 用户登录的处理
-//
-//        // 获取购物车的信息
-//
-//        if(ew_login('user')) {
-//            $cart_num = $db->count('cart', ['uid'=>$_SESSION['id']]);
-//        }else{
-//            if(unserialize(stripcslashes($_COOKIE['cart_list']))){
-//                $cart_num = count(unserialize(stripcslashes($_COOKIE['cart_list'])));
-//            }else{
-//                $cart_num = 0;
-//            }
-//        }
-//
-//
-//        $this->assign('cart_num', $cart_num);
+        // 用户登录的处理
+
+        // 获取购物车的信息
+
+        if(ew_login('user')) {
+            $cart_num = $db->count('cart', ['uid'=>$_SESSION['id']]);
+        }else{
+            if(unserialize(stripcslashes($_COOKIE['cart_list']))){
+                $cart_num = count(unserialize(stripcslashes($_COOKIE['cart_list'])));
+            }else{
+                $cart_num = 0;
+            }
+        }
+
+
+        $this->assign('cart_num', $cart_num);
 
 
         //记录访客的一次访问
 
         $db -> insert('iplog', ['ip'=>getClientIP(), 'atime'=>time()]);
 
-//        // 在所有的分类下搜索
-//        $this->assign('pid', 0);
+        // 在所有的分类下搜索
+        $this->assign('pid', 0);
     }
 }
 
