@@ -3,7 +3,7 @@
 <!-- content -->
 
 <div class="content">
-    <div class="now">您现在的位置：<a href="/">首页</a>
+    <div class="now">Position: <a href="/">Home</a>
         {% autoescape false %}
         {{nowpath}}
         {% endautoescape %}
@@ -15,7 +15,7 @@
                 <ul>
                     {% for v in class %}
 
-                    <li><a href="/alist/{{v.id}}" title="{{v.catname}}">{{v.catname}}</a></li>
+                    <li><a href="/alist/{{v.id}}" style="padding-left:10px;overflow: hidden" href="/article/{{v.id}}" title="{{v.catname}}">{{v.catname}}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -30,7 +30,7 @@
             {% for v in data %}
             <li>
                 <a href="/article/{{v.id}}" title="{{v.name}}">{{v.name}}</a>
-                <span class="fl c888">(浏览量：{{v.clicknum}})</span>
+                <span class="fl c888">(Page View: {{v.clicknum}})</span>
                 <span class="fr">{{atime|date('Y-m-d H:i')}}</span>
                 <div class="clear"></div>
             </li>

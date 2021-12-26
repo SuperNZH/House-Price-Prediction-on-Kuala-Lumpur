@@ -20,7 +20,7 @@
                 $classes[$v['id']] = $v['catname'];
             }
 
-            $this->assign('nowpath', " &gt; 资讯中心 &gt; <a href='/alist/{$article['cid']}'>{$classes[$article['cid']]}</a> &gt; ".$article['name']);
+            $this->assign('nowpath', " &gt; News &gt; <a href='/alist/{$article['cid']}'>{$classes[$article['cid']]}</a> &gt; ".$article['name']);
 
 
             $this->assign('cname', $classes[$article['cid']]);
@@ -52,7 +52,7 @@
                 $classes[$v['id']] = $v['catname'];
             }
 
-            $this->assign('nowpath', " &gt; 资讯中心 &gt; <a href='/alist/{$cid}'>{$classes[$cid]}</a>");
+            $this->assign('nowpath', " &gt; News Center &gt; <a href='/alist/{$cid}'>{$classes[$cid]}</a>");
             $this->assign('cname', $classes[$cid]);
 
 
@@ -89,7 +89,7 @@
 
 
 
-            $this->assign('title', '资讯中心');
+            $this->assign('title', 'News Center');
             $this->display('article/alist');
         }
     }

@@ -11,7 +11,7 @@
             $page = $db->get('page', '*', ['id'=>$id]);
 
 
-            $this->assign('nowpath', " &gt; 帮助中心 &gt; ".$page['name']);
+            $this->assign('nowpath', " &gt; Help Center &gt; ".$page['name']);
 
             $this->assign($page);
 

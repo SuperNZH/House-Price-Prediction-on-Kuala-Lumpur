@@ -3,26 +3,26 @@
 <!-- content -->
 
 <div class="content">
-    <div class="now">您现在的位置：<a href="/">首页</a>
+    <div class="now">Position: <a href="/">Home</a>
         {% autoescape false %}
         {{nowpath}}
         {% endautoescape %}
     </div>
     <div class="danye_left">
         <div class="danye_help">
-            <div class="danye_tt"  style="background:#00A8E8; color:#fff;">资讯中心</div>
+            <div class="danye_tt"  style="background:#00A8E8; color:#fff;">News</div>
             <div class="danye_list">
                 <ul>
                     {% for v in class %}
 
-                    <li><a href="/alist/{{v.id}}" title="{{v.catname}}">{{v.catname}}</a></li>
+                    <li><a href="/alist/{{v.id}}" style="padding-left:10px;overflow: hidden" href="/article/{{v.id}}" title="{{v.catname}}">{{v.catname}}</a></li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
         <div class="danye_help mat8">
             <div class="danye_list">
-                <h3>相关文章</h3>
+                <h3>Related Articles</h3>
                 <ul>
                     {% for v in data %}
                     <li><a style="padding-left:10px;overflow: hidden" href="/article/{{v.id}}" title="{{v.name}}">{{v.name}}</a></li>
@@ -37,7 +37,7 @@
 
         <div class="page_tt">{{cname}}</div>
         <h3 class="mat20 font16" style="text-align:center;">{{name}}</h3>
-        <p class="c888 mat10 mab20" style="text-align:center;">发布日期：{{atime|date('Y-m-d H:i')}}　浏览量：{{clicknum}}</p>
+        <p class="c888 mat10 mab20" style="text-align:center;">Date issued: {{atime|date('Y-m-d H:i')}}　Page view: {{clicknum}}</p>
         <div class="danye_main">
 
             {% autoescape false %}
