@@ -5,33 +5,33 @@
 
 <div class="width980">
     <div class="loginbox registbox">
-        <div class="logintt">用户注册</div>
+        <div class="logintt">User Registration</div>
         <form method="post" action="/user/register" id="form"  onsubmit="return validate('click')">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="regist_table">
                 <tr>
-                    <td width="15%" align="right">用户名:</td>
+                    <td width="15%" align="right">User Name</td>
                     <td width="33%"><input type="text" name="name" class="input1" /></td>
-                    <td width="52%"><span id="name" class="stats1">由5-15位字符组成（可以是字母、汉字、数字）</span></td>
+                    <td width="52%"><span id="name" class="stats1">Consists of 5-15 characters (can be char or num)</span></td>
                 </tr>
                 <tr>
-                    <td align="right">密码:</td>
+                    <td align="right">Password</td>
                     <td><input type="password" name="pw" class="input1" /></td>
-                    <td><span  id="pw" class="stats1">密码由6-16个字符组成!</span></td>
+                    <td><span  id="pw" class="stats1">Passwords are 6-16 characters long</span></td>
                 </tr>
                 <tr>
-                    <td align="right">确认密码:</td>
+                    <td align="right">Repeat Password</td>
                     <td><input type="password" name="pw1" class="input1" /></td>
-                    <td><span id="pw1" class="stats1">和上面的密码一致</span></td>
+                    <td><span id="pw1" class="stats1">Same password as above</span></td>
                 </tr>
                 <tr>
-                    <td align="right">邮箱:</td>
+                    <td align="right">E-mail</td>
                     <td><input type="text" name="email" class="input1" /></td>
-                    <td><span id="email" class="stats1">请填写您的常用邮箱，以方便与您联系</span></td>
+                    <td><span id="email" class="stats1">Fill in your usual email for easier contact</span></td>
                 </tr>
                 <tr>
                     <td align="right"></td>
                     <td>
-                        <input type="submit" class="btn_05" value="立即注册"  name="do_submit" style="margin:0" /></td>
+                        <input type="submit" class="btn_05" value="REGISTER !"  name="do_submit" style="margin:0" /></td>
                     <td></td>
                 </tr>
             </table>
@@ -66,7 +66,7 @@
             info=check(this.value, mess);
             if(info[0]){
                 cobj.className="stats2";
-                cobj.innerHTML="输入正确";
+                cobj.innerHTML="Input Correct";
             }else{
                 cobj.className="stats3";
                 cobj.innerHTML=info[1];
@@ -88,7 +88,7 @@
         var fg=true;
 
 
-        setStats("name", '由5-15位字符组成（可以是字母、汉字、数字）',function(val, mess){
+        setStats("name", 'Consists of 5-15 characters',function(val, mess){
             var info=[false, mess];
             if(notnull(val) && val.length >=5 && val.length <=15 ){
                 Ajax('html',false).get("/user/register?name="+val, function(data){
@@ -96,7 +96,7 @@
                     info[0]=eval(data);
 
                     if(!info[0]){
-                        info[1]="用户 "+val+" 已经存在";
+                        info[1]="Account:  "+val+" already existed";
                         fg=false;
                     }
 
@@ -109,7 +109,7 @@
 
         });
 
-        setStats("pw",'密码由6-16个字符组成!', function(val, mess){
+        setStats("pw",'Passwords are 6-16 characters long', function(val, mess){
             var info=[false, mess];
             if(notnull(val) && val.length >=6 && val.length <=16 ){
                 info[0]=true;
@@ -119,7 +119,7 @@
             return info;
         });
 
-        setStats("pw1",'和上面输入的密码要一致!',function(val, mess){
+        setStats("pw1",'It must be the same as the password entered above!',function(val, mess){
             var userpwd = document.getElementsByName('pw')[0];
             var info=[false, mess];
             if(val==userpwd.value && val.length >= 6  && val.length <=16 ){
@@ -130,7 +130,7 @@
             return info;
         });
 
-        setStats("email", '请填写您的常用邮箱，以方便与您联系!', function(val, mess){
+        setStats("email", 'Fill in your usual E-mail', function(val, mess){
             var info=[false, mess];
 
             if(val.match(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)){

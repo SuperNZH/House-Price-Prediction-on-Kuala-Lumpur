@@ -12,20 +12,20 @@
 <body>
 <div class="pagetop">
 
-<!--    {% if login %}-->
-<!--    <div class="quick_menu">-->
-<!--        <p>-->
-<!--            <span class="fl">您好<a style="border:0px;padding:0px" href="/user/order" title="会员中心"><span class="cred">{{session.name}}</span></a>， {{setting.web_title}}</span>-->
-<!--            <span class="fr">-->
-<!--				<a href="/user/order" title="会员中心">会员中心</a>-->
-<!--				<a href="/order/add" title="购物车" class="gwc">购物车 <span class="cred">{{cart_num}}</span> 件</a>-->
-<!--				<a href="/order/plist" title="订单查询">订单查询</a>-->
-<!--				<a href="/user/logout" title="退出" style="border:0">退出</a>-->
-<!--			</span>-->
-<!--        </p>-->
-<!--    </div>-->
+    {% if login %}
+    <div class="quick_menu">
+        <p>
+            <span class="fl">Hello! <a style="border:0px;padding:0px" href="/user/order" title="Account Center"><span class="cred">{{session.name}}</span></a>，{{setting.web_title}}</span>
+            <span class="fr">
+				<a href="/user/order" title="Account Center">MyAccount</a>
+				<a href="/order/add" title="Shopping Cart" class="gwc">Cart <span class="cred">{{cart_num}}</span></a>
+				<a href="/order/plist" title="Order Check">Order Check</a>
+				<a href="/user/logout" title="Logout" style="border:0">Logout</a>
+			</span>
+        </p>
+    </div>
 
-<!--    {% else %}-->
+    {% else %}
 
     <div class="quick_menu">
         <p>
@@ -39,7 +39,7 @@
         </p>
     </div>
 
-<!--    {% endif %}-->
+    {% endif %}
 
     <div class="width980">
         <div class="header" style="padding:10px 0">

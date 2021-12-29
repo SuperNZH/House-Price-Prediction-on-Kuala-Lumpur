@@ -106,18 +106,18 @@
     Macaw::get('/alist/(:num)', 'home\Article@alist');  // 文章列表页面
     Macaw::get('/article/(:num)', 'home\Article@index');  // 文章详情页面
 
-//    // 用户注册、登录、退出
-//    Macaw::any("/user/register", 'home\User@register');
-//    Macaw::any("/user/login", 'home\User@login');
-//    Macaw::any("/user/logout", 'home\User@logout');
-//
-//    // 用户后台操作路由
-//    Macaw::get('/admin/user', "admin\User@index");  //列表
-//    Macaw::get('/admin/user/mod/(:num)', 'admin\User@mod'); //获取修改UI
-//    Macaw::post('/admin/user/doupdate', 'admin\User@doupdate'); //修改操作
-//    Macaw::get('/admin/user/del/(:num)', 'admin\User@del'); //删除
-//    Macaw::post('/admin/user/alldel', 'admin\User@alldel'); //批量删除
-//
+    // 用户注册、登录、退出
+    Macaw::any("/user/register", 'home\User@register');
+    Macaw::any("/user/login", 'home\User@login');
+    Macaw::any("/user/logout", 'home\User@logout');
+
+    // 用户后台操作路由
+    Macaw::get('/admin/user', "admin\User@index");  //列表
+    Macaw::get('/admin/user/mod/(:num)', 'admin\User@mod'); //获取修改UI
+    Macaw::post('/admin/user/doupdate', 'admin\User@doupdate'); //修改操作
+    Macaw::get('/admin/user/del/(:num)', 'admin\User@del'); //删除
+    Macaw::post('/admin/user/alldel', 'admin\User@alldel'); //批量删除
+
 //    //添加收藏、咨询、评价
 //    Macaw::get('/product/collectadd', "home\Product@collectadd");  //添加收藏
 //    Macaw::POST('/product/commentadd', "home\Product@commentadd");  //添加评价
