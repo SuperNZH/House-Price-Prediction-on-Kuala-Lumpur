@@ -225,7 +225,7 @@
 
     function collect_add(id) {
         if (!{{login}}) {
-            alert('抱歉：只有登录用户才能收藏商品！请先登录...');
+            alert('Sorry: Only logged-in customers can add goods to LIKES! Please log in...');
             return;
         }
         $.getJSON("/product/collectadd", {"pid":id},function(json){
@@ -243,12 +243,12 @@
                 art.dialog({
                     id: 'cart_add',
                     lock: true,
-                    content: '<div class="gw"><p>商品已成功加入购物车！</p><a class="gw2" href="/order/add"></a><a class="gw1" href="javascript:dialog_close();"></a></div>'
+                    content: '<div class="gw"><p>Good has been added to cart successfully!</p><a class="gw2" href="/order/add"></a><a class="gw1" href="javascript:dialog_close();"></a></div>'
                 });
             }else if (json.result == -1) {
-                alert('商品库存不足...')
+                alert('Lack of Inventory...')
             } else {
-                alert('抱歉，加入购物车失败，请重新加入...')
+                alert('Failed to add to shopping cart, please re-add...')
             }
         })
     }
@@ -274,12 +274,12 @@
         $("#js_askhtml").find(":button").click(function(){
             //判断登陆
             if (!{{login}}) {
-                alert('抱歉：只有登录用户才能发表咨询！请先登录...');
+                alert('Sorry: Only login users can consult! Please log in...');
                 return;
             }
             var ask_text = $(":input[name='asktext']").val();
             if (ask_text == '') {
-                alert('咨询内容必须填写');
+                alert('Consultation content must be filled out');
                 return;
             }
 
@@ -289,9 +289,9 @@
                 if (json.result) {
                     $("#js_askhtml").prepend(json.html);
                     $(":input[name='asktext']").val('');
-                    alert('咨询提交成功！卖家会尽快答复...');
+                    alert('Consultation Question submitted successfully! The seller will reply as soon as possible');
                 }else {
-                    alert('抱歉，咨询提交失败，请重新提交...');
+                    alert('Sorry, consultation submission failed, please resubmit...');
                 }
             }, 'json');
         });
@@ -300,13 +300,13 @@
         //评价发表
         $("#js_commenthtml").find(":button").click(function(){
             if (!{{login}}) {
-                alert('抱歉：只有登录用户才能发表评价！请先登录...');
+                alert('Sorry: Only logged-in customers can post comments! Please log in...');
                 return;
             }
 
             var comment_text = $(":input[name='content']").val();
             if (comment_text == '') {
-                alert('评价内容必须填写');
+                alert('The comment content must be completed.');
                 return;
             }
 
@@ -314,10 +314,10 @@
                 if (json.result) {
                     $("#js_commenthtml").prepend(json.html);
                     $(":input[name='content']").val('');
-                    alert('感谢您的支持，评价提交成功！');
+                    alert('Thank you for your support, comment submitted successfully!');
                 }
                 else {
-                    alert('抱歉，评价提交失败，请重新提交...')
+                    alert('Sorry, comment submission failed, please resubmit...')
                 }
             }, "json")
         });

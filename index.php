@@ -118,24 +118,24 @@
     Macaw::get('/admin/user/del/(:num)', 'admin\User@del'); //删除
     Macaw::post('/admin/user/alldel', 'admin\User@alldel'); //批量删除
 
-//    //添加收藏、咨询、评价
-//    Macaw::get('/product/collectadd', "home\Product@collectadd");  //添加收藏
-//    Macaw::POST('/product/commentadd', "home\Product@commentadd");  //添加评价
-//    Macaw::POST('/product/askadd', "home\Product@askadd");  //添加咨询
-//
-//    // 咨询后台操作路由
-//    Macaw::get('/admin/ask', "admin\Ask@index");  //列表
-//    Macaw::get('/admin/ask/reply/(:num)', 'admin\Ask@reply'); //获取修改UI
-//    Macaw::post('/admin/ask/doreply', 'admin\Ask@doreply'); //修改操作
-//    Macaw::get('/admin/ask/del/(:num)', 'admin\Ask@del'); //删除
-//    Macaw::post('/admin/ask/alldel', 'admin\Ask@alldel'); //批量删除
-//
-//    // 评价后台操作路由
-//    Macaw::get('/admin/comment', "admin\Comment@index");  //列表
-//    Macaw::get('/admin/comment/mod/(:num)', 'admin\Comment@mod'); //获取修改UI
-//    Macaw::post('/admin/comment/doupdate', 'admin\Comment@doupdate'); //修改操作
-//    Macaw::get('/admin/comment/del/(:num)', 'admin\Comment@del'); //删除
-//    Macaw::post('/admin/comment/alldel', 'admin\Comment@alldel'); //批量删除
+    //添加收藏、咨询、评价
+    Macaw::get('/product/collectadd', "home\Product@collectadd");  //添加收藏
+    Macaw::POST('/product/commentadd', "home\Product@commentadd");  //添加评价
+    Macaw::POST('/product/askadd', "home\Product@askadd");  //添加咨询
+
+    // 咨询后台操作路由
+    Macaw::get('/admin/ask', "admin\Ask@index");  //列表
+    Macaw::get('/admin/ask/reply/(:num)', 'admin\Ask@reply'); //获取修改UI
+    Macaw::post('/admin/ask/doreply', 'admin\Ask@doreply'); //修改操作
+    Macaw::get('/admin/ask/del/(:num)', 'admin\Ask@del'); //删除
+    Macaw::post('/admin/ask/alldel', 'admin\Ask@alldel'); //批量删除
+
+    // 评价后台操作路由
+    Macaw::get('/admin/comment', "admin\Comment@index");  //列表
+    Macaw::get('/admin/comment/mod/(:num)', 'admin\Comment@mod'); //获取修改UI
+    Macaw::post('/admin/comment/doupdate', 'admin\Comment@doupdate'); //修改操作
+    Macaw::get('/admin/comment/del/(:num)', 'admin\Comment@del'); //删除
+    Macaw::post('/admin/comment/alldel', 'admin\Comment@alldel'); //批量删除
 //
 //    //个人中心
 //    Macaw::get('/user/order', 'home\User@order');   // 订单列表

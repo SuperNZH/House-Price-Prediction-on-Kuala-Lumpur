@@ -251,8 +251,8 @@
 $html = <<<html
 
   <ul class="mat5">
-        <li class="fl">会员：{$_POST['uname']}</li>
-        <li class="fr">咨询日期：{$atime}</li>
+        <li class="fl">Name: {$_POST['uname']}</li>
+        <li class="fr">Date: {$atime}</li>
   </ul>
     <div class="padb10 mal10 lh18">
         <div class="mat10 font14">{$asktext}</div>
@@ -292,10 +292,10 @@ html;
                     $commenttext = htmlspecialchars($_POST['content']);
 $html = <<<html
 <ul>
-    <li class="fl">会员：{$_POST['uname']}</li>
-    <li class="fr">评价日期：{$atime}</li>
+    <li class="fl">Name: {$_POST['uname']}</li>
+    <li class="fr">Date: {$atime}</li>
 </ul>
-<div class="pingjia font14">{$commenttext}}</div>
+<div class="pingjia font14">{$commenttext}</div>
 html;
 
 

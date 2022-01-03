@@ -56,7 +56,7 @@ class User extends Admin {
 
 
         $totalItems = $db->count('user', $where);
-        $itemsPerPage = PNUM;
+        $itemsPerPage = 5;
         $currentPage = $num;
         $urlPattern = '/admin/user?num=(:num)'.$orderby.$name.$phone.$email;
 
