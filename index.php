@@ -136,20 +136,20 @@
     Macaw::post('/admin/comment/doupdate', 'admin\Comment@doupdate'); //修改操作
     Macaw::get('/admin/comment/del/(:num)', 'admin\Comment@del'); //删除
     Macaw::post('/admin/comment/alldel', 'admin\Comment@alldel'); //批量删除
-//
-//    //个人中心
-//    Macaw::get('/user/order', 'home\User@order');   // 订单列表
-//    Macaw::get('/user/orderview/(:num)', 'home\User@orderview'); //订单详情
-//    Macaw::get('/user/orderdel/(:num)', 'home\User@orderdel'); //取消订单
-//
-//    Macaw::get('/user/collect', 'home\User@collect');   // 我的收藏
-//    Macaw::get('/user/collectdel', 'home\User@collectdel');   // 删除我的收藏
-//    Macaw::get('/user/ask', 'home\User@ask');   // 我的咨询
-//    Macaw::get('/user/comment', 'home\User@comment');   // 我的评价
-//
-//    Macaw::any('/user/base', 'home\User@base');  // 个人信息设置
-//    Macaw::any('/user/pw', 'home\User@pw');  // 修改设置
-//
+
+    //个人中心
+    Macaw::get('/user/order', 'home\User@order');   // 订单列表
+    Macaw::get('/user/orderview/(:num)', 'home\User@orderview'); //订单详情
+    Macaw::get('/user/orderdel/(:num)', 'home\User@orderdel'); //取消订单
+
+    Macaw::get('/user/collect', 'home\User@collect');   // 我的收藏
+    Macaw::get('/user/collectdel', 'home\User@collectdel');   // 删除我的收藏
+    Macaw::get('/user/ask', 'home\User@ask');   // 我的咨询
+    Macaw::get('/user/comment', 'home\User@comment');   // 我的评价
+
+    Macaw::any('/user/base', 'home\User@base');  // 个人信息设置
+    Macaw::any('/user/pw', 'home\User@pw');  // 修改密码设置
+
 //    Macaw::get('/order/cartadd', 'home\Order@cartadd');   // 添加购物车
 //    Macaw::get('/order/cartnum', 'home\Order@cartnum');   // 添加购物车
 //    Macaw::get('/order/pay/(:num)', 'home\Order@pay');   // 支付

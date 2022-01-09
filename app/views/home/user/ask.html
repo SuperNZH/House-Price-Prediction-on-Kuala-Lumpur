@@ -10,9 +10,9 @@
                     <img src="{{res}}/product/{{v.logo}}" width="60" height="60"></a>
                 <div class="fl" style="width:695px; margin-left:15px; display:inline;">
                     <p><a href="/product/{{v.pid}}" target="_blank" class="cblue font14">{{v.name}}</a></p>
-                    <p class="mat5 font13">[{{v.atime|date('Y-m-d H:i')}}]咨询：{{v.asktext}}</p>
+                    <p class="mat5 font13">[{{v.atime|date('Y-m-d H:i')}}] ASKED: {{v.asktext}}</p>
                     {% if v.replytext !=null %}
-                    <p class="mat5 cred font13" style="text-align:left">[{{v.replytime|date('Y-m-d H:i')}}]回复：{{v.replytext}}</p>
+                    <p class="mat5 cred font13" style="text-align:left">[{{v.replytime|date('Y-m-d H:i')}}] REPLIED: {{v.replytext}}</p>
                     {% endif %}
 
                 </div>

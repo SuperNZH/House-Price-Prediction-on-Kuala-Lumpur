@@ -6,10 +6,10 @@
         <div class="hy_table hy_table2">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td class="bg_f8" style="height:auto">商品名称</td>
-                    <td class="bg_f8" width="100" style="height:auto">商品价格</td>
-                    <td class="bg_f8" width="150" style="height:auto">收藏日期</td>
-                    <td class="bg_f8" width="60" style="height:auto">操作</td>
+                    <td class="bg_f8" style="height:auto">Product Name</td>
+                    <td class="bg_f8" width="100" style="height:auto">Price</td>
+                    <td class="bg_f8" width="150" style="height:auto">Collection Date</td>
+                    <td class="bg_f8" width="60" style="height:auto">Operate</td>
                 </tr>
                 {% for v in data %}
                 <tr>
@@ -21,7 +21,7 @@
                     </td>
                     <td class="money1"><small>￥</small>{{v.money}}</td>
                     <td class="c666">{{v.atime|date('Y-m-d H:i')}}</td>
-                    <td><a class="cblue" href="/user/collectdel?id={{v.id}}&pid={{v.pid}}" onclick="return confirm('确定要删除{{v.name}}商品的收藏吗?')">删除</a></td>
+                    <td><a class="cblue" href="/user/collectdel?id={{v.id}}&pid={{v.pid}}" onclick="return confirm('You sure you wanna remove {{v.name}} from [Likes?]')">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>
