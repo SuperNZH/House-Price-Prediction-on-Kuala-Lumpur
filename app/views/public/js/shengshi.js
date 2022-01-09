@@ -1,8 +1,8 @@
-var shengshi = [{"p":"北京市","c":["北京市"]},
-{"p":"天津市","c":["天津市"]},
-{"p":"上海市","c":["上海市"]},
-{"p":"重庆市","c":["重庆市"]},
-{"p":"河北省","c":["石家庄市","唐山市","秦皇岛市","邯郸市","邢台市","保定市","张家口市","承德市","沧州市","廊坊市","衡水市"]},
+var shengshi = [{"p":"Beijing","c":["Beijing"]},
+{"p":"Tianjin","c":["Tianjin"]},
+{"p":"Shanghai","c":["Shanghai"]},
+{"p":"Chongqing","c":["Chongqing"]},
+{"p":"Hebei","c":["Shijiazhuang", "tangshan", "Qinhuangdao", "Handan", "Xingtai", "Baoding", "Zhangjiakou" , "Chengde","cangzhou", "Langfang","Hengshui"]},
 {"p":"山西省","c":["太原市","大同市","阳泉市","长治市","晋城市","朔州市","晋中市","运城市","忻州市","临汾市","吕梁市"]},
 {"p":"台湾省","c":["台北市","高雄市","基隆市","台中市","台南市","新竹市","嘉义市","台北县","宜兰县","桃园县","新竹县","苗栗县","台中县","彰化县","南投县","云林县","嘉义县","台南县","高雄县","屏东县","澎湖县","台东县","花莲县"]},
 {"p":"辽宁省","c":["沈阳市","大连市","鞍山市","抚顺市","本溪市","丹东市","锦州市","营口市","阜新市","辽阳市","盘锦市","铁岭市","朝阳市","葫芦岛市"]},
@@ -42,8 +42,8 @@ function shengshi_init(json) {
 	else {
 		var cid = json.cid;
 	}
-	var phtml = '<option value="">请选择</option>';
-	var shtml = '<option value="">请选择</option>';
+	var phtml = '<option value="">Select</option>';
+	var shtml = '<option value="">Select</option>';
 	for (k in shengshi) {
 		if (shengshi[k].p == json.pval) {
 			phtml += '<option value="'+shengshi[k].p+'" selected="selected">'+shengshi[k].p+'</option>';
@@ -70,7 +70,7 @@ function shengshi_init(json) {
 	$("#"+pid).html(phtml);
 	$("#"+cid).html(shtml);
 	$("#"+pid).bind("change", function(){
-		var shtml = '<option value="">请选择</option>';
+		var shtml = '<option value="">Select</option>';
 		for (k in shengshi) {
 			if (shengshi[k].p == $("#"+pid).val()) {
 				for (kk in shengshi[k].c) {

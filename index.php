@@ -150,13 +150,13 @@
     Macaw::any('/user/base', 'home\User@base');  // 个人信息设置
     Macaw::any('/user/pw', 'home\User@pw');  // 修改密码设置
 
-//    Macaw::get('/order/cartadd', 'home\Order@cartadd');   // 添加购物车
-//    Macaw::get('/order/cartnum', 'home\Order@cartnum');   // 添加购物车
-//    Macaw::get('/order/pay/(:num)', 'home\Order@pay');   // 支付
-//    Macaw::any('/order/add', 'home\Order@add');   // 添加订单
-//    Macaw::get('/order/plist', 'home\Order@plist');   // 查询订单
-//
-//
+    Macaw::get('/order/cartadd', 'home\Order@cartadd');   // 添加购物车
+    Macaw::get('/order/cartnum', 'home\Order@cartnum');   // 添加购物车
+    Macaw::get('/order/pay/(:num)', 'home\Order@pay');   // 支付
+    Macaw::any('/order/add', 'home\Order@add');   // 添加订单
+    Macaw::get('/order/plist', 'home\Order@plist');   // 查询订单
+
+
 //    //后台卖家查询和处理定单
 //    Macaw::get('/admin/order', 'admin\Order@index');
 //    Macaw::get('/admin/order/del/(:num)', 'admin\Order@del');

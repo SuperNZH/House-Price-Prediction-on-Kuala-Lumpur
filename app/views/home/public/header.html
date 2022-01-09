@@ -52,7 +52,8 @@
             <div class="sear fl">
                 <form method="get" action="/plist/{{pid}}">
                     <div class="inputbg fl">
-                        <input type="text" name="keyword" value="{{order.keyword}}" class="fl searinput c666"/>
+<!--                        要不然这个value就是{{order.keyword}}-->
+                        <input type="text" name="keyword" value=" " class="fl searinput c666"/>
                     </div>
                     <input type="submit" class="fl sear_btn" onclick="this.form.submit();return false;" value="Go"/>
                 </form>

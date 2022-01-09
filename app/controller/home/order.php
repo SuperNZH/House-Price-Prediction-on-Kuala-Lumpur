@@ -77,10 +77,10 @@
             if(isset($_POST['do_submit'])) {
 
                 //如果没用够买商品， 就不能生成订单
-                !count($info_list) && $this->error('/order/add', "购物车商品为空...");
+                !count($info_list) && $this->error('/order/add', "Cart empty...");
 
                 //如果没有选择支付方式，也不能生成订单
-                !$_POST['payway'] && $this->error('/order/add', "请选择支付方式...");
+                !$_POST['payway'] && $this->error('/order/add', "Please select payment method...");
 
                 $order_count = $db->count('order');
 
@@ -132,11 +132,11 @@
                         setcookie('cart_list', '', 0, '/');
                     }
 
-                    $this->success('/order/pay/'.$order_id, '订单提交成功');
+                    $this->success('/order/pay/'.$order_id, 'Order submitted successfully');
 
 
                 }else{
-                    $this->error('/order/add', '订单提交失败');
+                    $this->error('/order/add', 'Order submission failed');
                 }
 
             }
@@ -160,7 +160,7 @@
 
 
 
-            $this->assign('title', '填写收货信息');
+            $this->assign('title', 'Fill in the receiving information');
             $this->display('order/add');
         }
 
@@ -216,13 +216,13 @@
 
             $order = $db -> get('order', '*', ['id'=>$order_id, 'state'=>1]);
 
-            !$order['id'] && $this->error('/order/pay/'.$order_id, "订单号错误");
+            !$order['id'] && $this->error('/order/pay/'.$order_id, "Wrong Order Number");
 
             $this->assign($order);
 
 
 
-            $this->assign('title', '选择支付方式');
+            $this->assign('title', 'Please Choose the Payment Method');
             $this->display('order/pay');
         }
 
@@ -237,7 +237,7 @@
             $this->assign('product_list', $product_list);
 
 
-            $this->assign('title', '订单查询');
+            $this->assign('title', 'Order Check');
             $this->assign('get', $_GET);
             $this->display('order/plist');
         }
