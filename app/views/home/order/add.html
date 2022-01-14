@@ -125,7 +125,7 @@
         })
     })
 
-    shengshi_init({"pval":"北京市","cval":"北京市"});
+    shengshi_init({"pval":"Shanghai","cval":"Shanghai"});
 </script>
 
 
@@ -191,7 +191,7 @@
 
         setStats("tname",'Wrong name of consignee!', function(val, mess){
             var info=[false, mess];
-            if(notnull(val) && val.length >=2 && val.length <=6 ){
+            if(notnull(val) && val.length >=1 && val.length <=20 ){
                 info[0]=true;
             }else{
                 fg=false;

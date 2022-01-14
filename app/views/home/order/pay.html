@@ -3,17 +3,17 @@
     <div class="order_cg">
         <p>
             {% if payway == '3' %}
-            您已成功提交订单，等待管理员审核发货！
+            You have submitted order, waiting for the admin to deliver
             {% else %}
-                您已成功提交订单， 请及时付款;
+                You have submitted order, please pay
             {% endif %}
         </p>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的订单编号：<span class="cblue mar20">{{id}}</span>
-        应付金额：<span class="cred font16 mar20 strong num">{{money}}元</span>
-        付款方式：<span class="cred font14 mar20">{{cache_payway[payway].name}}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your order No：<span class="cblue mar20">{{id}}</span>
+        Amount payable：<span class="cred font16 mar20 strong num">￥{{money}}</span>
+        Pay way：<span class="cred font14 mar20">{{cache_payway[payway].name}}</span>
 
         {% if payway == '1' %}
-            支付宝二维码
+            Alipay QR code
         <form action=""></form>
         {% elseif payway == '2' %}
 

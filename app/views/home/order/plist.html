@@ -5,20 +5,20 @@
         <div class="chaxun">
             <form method="get" action="/order/plist">
 
-                <span class="fl mat5 font14 mab10">请输入您的订单号：</span>
+                <span class="fl mat5 font14 mab10">Order Number :</span>
                 <input type="text" name="id" value="{{get.id}}" class="chaxun_input fl mal5" />
                 <div class="clear"></div>
-                <span class="fl mat5 font14 mab20">请输入您的手机号：</span>
+                <span class="fl mat5 font14 mab20">Phone Number :</span>
                 <input type="text" name="uphone" value="{{get.uphone}}" class="chaxun_input fl mal5" />
                 <div class="clear"></div>
-                <input type="submit" class="chaxun_btn" style="margin-left:180px" value="查 询">
+                <input type="submit" class="chaxun_btn" style="margin-left:180px" value="Query">
             </form>
         </div>
         {% if id %}
-        <h3 style="margin-top:0">订单状态<span class="normal cred">（您的订单编号为：{{id}}）</span></h3>
+        <h3 style="margin-top:0">Order Status<span class="normal cred">（Your order number is：{{id}}）</span></h3>
         <p class="mat5">
 
-            <span class="cgreen">已下单</span>[{{atime|date('Y-m-d H:i')}}] →
+            <span class="cgreen">Order Placed</span>[{{atime|date('Y-m-d H:i')}}] →
             <!--货到付款-->
 
             {# 货到付款 #}
@@ -79,7 +79,7 @@
 
         {% else %}
 
-            <div class="font16 cred mat10" style="width:100%;text-align: center">您的订单号或手机号有误， 请重新输入</div>
+            <div class="font16 cred mat10" style="width:100%;text-align: center">Phone or Order number is wrong, please enter it again</div>
         {% endif %}
     </div>
 </div>
